@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { faFacebook, faDiscord, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { faBars, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faFacebook, faDiscord, faGoogle, faCanadianMapleLeaf } from '@fortawesome/free-brands-svg-icons';
 
 
 @Component({
@@ -14,5 +14,7 @@ faBars = faBars;
 faDiscord = faDiscord;
 faGoogle = faGoogle;
 faFacebook= faFacebook;
+faRightToBracket= faRightFromBracket;
+faCanadianMapleLeaf= faCanadianMapleLeaf;
 
 }

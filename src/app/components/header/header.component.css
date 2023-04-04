@@ -35,3 +35,13 @@ a:link{
 a:visited{
     color: inherit;
 }
+
+.login{
+    border:none;
+    background-color: transparent;
+    color:inherit;
+}
+
+.faCanadianMapleLeaf{
+    color: #df8f20;
+}
