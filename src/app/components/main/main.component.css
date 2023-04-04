@@ -1,0 +1,7 @@
+main{
+    max-width: 1000px;
+    display: flex;
+    margin: auto;
+    padding-top: 10px;
+    background-color: aqua;
+}

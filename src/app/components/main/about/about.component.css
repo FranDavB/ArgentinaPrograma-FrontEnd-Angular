@@ -1,0 +1,12 @@
+main{
+    display: flex;
+}
+
+.info{
+    margin: auto;
+}
+
+img.photo{
+    filter: grayscale(50%);
+    width: 500px;
+}
