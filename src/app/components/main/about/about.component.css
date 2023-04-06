@@ -1,12 +1,18 @@
 main{
     display: flex;
+    padding-top: 50px;
 }
 
 .info{
     margin: auto;
+    text-align: justify;
 }
 
 img.photo{
-    filter: grayscale(50%);
-    width: 500px;
+    width: 400px;
+    margin-right: 50px;
+    border-radius: 50px;
+    filter: grayscale(75%);
+
+    backdrop-filter: blur(10px);
 }

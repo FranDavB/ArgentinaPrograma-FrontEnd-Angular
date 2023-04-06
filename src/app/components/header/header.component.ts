@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faBars, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faRightFromBracket, faSun } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faDiscord, faGoogle, faCanadianMapleLeaf } from '@fortawesome/free-brands-svg-icons';
 import {Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   faGoogle = faGoogle;
   faFacebook= faFacebook;
   faRightToBracket= faRightFromBracket;
-  faCanadianMapleLeaf= faCanadianMapleLeaf;
+  faCanadianMapleLeaf= faSun;
 
   constructor(private responsive: BreakpointObserver) {
   }
