@@ -1,0 +1,14 @@
+{
+    "experiences": [
+      {
+        "id": 1,
+        "logourl": "/assets/Img/amadacrianzalogo.png",
+        "descripcion": "Amada Crianza es una empresa con el objetivo de vestir a tus hijos desde su nacimiento hasta su adolescencia! Desde mayo de 2023 me desempeño como desarrollador de su nueva página web, basada en Angular, Java y MySQL."
+      },
+      {
+        "id": 2,
+        "logourl": "/assets/Img/amadacrianzalogo.png",
+        "descripcion": "Esto es un texto de prueba, su unica funcion es probar la funcionaliad! Desde mayo de 2023 me desempeño como desarrollador de su nueva página web, basada en Angular, Java y MySQL."
+      }
+    ]
+}

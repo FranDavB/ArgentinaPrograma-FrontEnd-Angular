@@ -1,0 +1,22 @@
+main{
+    margin: 10px 50px;
+}
+
+.logos{
+    display: flex;
+}
+
+.logobutton{
+    margin: auto;
+    border:none;
+    cursor: pointer;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+}
+
+.logo{
+    width: 75px;
+    height: auto;
+    filter: grayscale(100%);
+}

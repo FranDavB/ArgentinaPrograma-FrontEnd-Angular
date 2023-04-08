@@ -1,0 +1,14 @@
+<main>
+    <div
+        class="logos">
+        <a 
+            *ngFor="let experience of experiences"
+            class="logobutton"
+            (click)="onSelect(experience)">
+            <img src="{{experience.logourl}}" alt="logo" class="logo">
+        </a>
+    </div>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+</main>

@@ -1,0 +1,11 @@
+.descriptions{
+    margin: 10px 50px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #CDCBBF;
+}
+
+.descriptions p{
+    text-align: justify;
+    padding: 20px;
+}
