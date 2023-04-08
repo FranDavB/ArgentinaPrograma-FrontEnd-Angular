@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { DatabaseService } from './services/database.service';
 import { ElementexpComponent } from './components/main/experience/elementexp/elementexp.component';
+import { LoginComponent } from './components/header/login/login.component';
+
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,14 +24,16 @@ import { ElementexpComponent } from './components/main/experience/elementexp/ele
     MainComponent,
     AboutComponent,
     ExperienceComponent,
-    ElementexpComponent
+    ElementexpComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [DatabaseService
   ],

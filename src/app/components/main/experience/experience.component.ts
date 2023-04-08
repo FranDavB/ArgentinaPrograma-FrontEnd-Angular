@@ -32,7 +32,7 @@ export class ExperienceComponent implements OnInit {
   }
 
   onSelect(experience: any){
-    this.router.navigate(['/experiencia', experience.id])
+    this.router.navigate(['/principal/experiencia', experience.id])
   }
 
 }
