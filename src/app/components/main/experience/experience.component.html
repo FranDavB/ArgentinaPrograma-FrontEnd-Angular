@@ -1,14 +1,30 @@
-<main>
+<main *ngIf="!mostrarAddExp">
     <div
         class="logos">
-        <a 
+        <button 
             *ngFor="let experience of experiences"
-            class="logobutton"
-            (click)="onSelect(experience)">
-            <img src="{{experience.logourl}}" alt="logo" class="logo">
-        </a>
+            class="btn logobutton"
+            (click)="onSelect(experience)">{{experience.name}}
+        </button>
     </div>
+
     <div>
         <router-outlet></router-outlet>
     </div>
+
+    <div class="editbuttons">
+        <div class="center">
+            <a 
+                class="btn"
+                (click)="toggleMostrarAddExp()">
+                <fa-icon  [icon]="faSquarePlus" class="fa-xl"></fa-icon>
+            </a>
+        </div>
+    </div>
+
 </main>
+<app-add-experience 
+    *ngIf="mostrarAddExp"
+    (onaddExperience) = "addExperience($event); toggleMostrarAddExp()">
+
+</app-add-experience>

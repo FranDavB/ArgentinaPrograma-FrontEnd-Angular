@@ -1,14 +1,32 @@
 {
-    "experiences": [
-      {
-        "id": 1,
-        "logourl": "/assets/Img/amadacrianzalogo.png",
-        "descripcion": "Amada Crianza es una empresa con el objetivo de vestir a tus hijos desde su nacimiento hasta su adolescencia! Desde mayo de 2023 me desempeño como desarrollador de su nueva página web, basada en Angular, Java y MySQL."
-      },
-      {
-        "id": 2,
-        "logourl": "/assets/Img/amadacrianzalogo.png",
-        "descripcion": "Esto es un texto de prueba, su unica funcion es probar la funcionaliad! Desde mayo de 2023 me desempeño como desarrollador de su nueva página web, basada en Angular, Java y MySQL."
-      }
-    ]
+  "experiences": [
+    {
+      "id": 1,
+      "name": "Amada Crianza",
+      "logourl": "/assets/Img/amadacrianzalogo.png",
+      "description": "Amada Crianza es una empresa con el objetivo de vestir a tus hijos desde su nacimiento hasta su adolescencia! Desde mayo de 2023 me desempeño como desarrollador de su nueva página web, basada en Angular, Java y MySQL.",
+      "date": "Mayo 2023 - Actualidad"
+    },
+    {
+      "id": 2,
+      "name": "Empresa2",
+      "logourl": "/assets/Img/amadacrianzalogo.png",
+      "description": "Esto es un texto de prueba, su unica funcion es probar la funcionaliad! Desde mayo de 2023 me desempeño como desarrollador de su nueva página web, basada en Angular, Java y MySQL.",
+      "date": "Mayo 2023 - Actualidad"
+    },
+    {
+      "name": "Empresa3",
+      "logourl": "https://d22fxaf9t8d39k.cloudfront.net/2dafdf83c06414144f86b30f531a4494d559a594e0cb6d54b8ebef59f7118dfd16986.png",
+      "description": "Esto es un nuevo texto de prueba. No se debe tener en cuenta3",
+      "date": "Enero 2023 - Febrero 2023",
+      "id": 3
+    },
+    {
+      "name": "Empresa4",
+      "logourl": "https://d22fxaf9t8d39k.cloudfront.net/2dafdf83c06414144f86b30f531a4494d559a594e0cb6d54b8ebef59f7118dfd16986.png",
+      "description": "Esto es un nuevo texto de prueba. No se debe tener en cuenta. AGUANTE EL PACO VIEJA",
+      "date": "Enero 2023 - Febrero 2023",
+      "id": 4
+    }
+  ]
 }

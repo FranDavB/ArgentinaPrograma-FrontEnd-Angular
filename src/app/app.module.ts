@@ -15,7 +15,9 @@ import { DatabaseService } from './services/database.service';
 import { ElementexpComponent } from './components/main/experience/elementexp/elementexp.component';
 import { LoginComponent } from './components/header/login/login.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddExperienceComponent } from './components/main/experience/add-experience/add-experience.component';
+import { EditExperienceComponent } from './components/main/experience/edit-experience/edit-experience.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { FormsModule } from '@angular/forms';
     AboutComponent,
     ExperienceComponent,
     ElementexpComponent,
-    LoginComponent
+    LoginComponent,
+    AddExperienceComponent,
+    EditExperienceComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,8 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     FontAwesomeModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [DatabaseService
   ],

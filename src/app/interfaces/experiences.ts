@@ -1,5 +1,7 @@
 export interface Experiences{
-    id: number;
+    id?: number;
+    name: string;
     logourl: string;
-    descripcion: string;
+    description: string;
+    date: string;
 }

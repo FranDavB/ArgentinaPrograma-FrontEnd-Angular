@@ -1,5 +1,32 @@
-<div class="descriptions" id="id">
+<div 
+    class="descriptions" 
+    id="id"
+    *ngIf="!mostrarEditExp">
     <p>
-        {{descripcion}}
+        <img src="{{experience.logourl}}" alt="{{experience.id}}" class="logo">
     </p>
+    <p>
+        {{experience.description}}
+    </p>
+    <p>
+        <b>{{experience.date}}</b>
+    </p>
+    <button 
+        class="btn"
+        (click)="onDeleteExp(this.id)">
+        <fa-icon  [icon]="faTrash" class="fa-xl"></fa-icon>
+    </button>
+    <button 
+        class="btn"
+        (click)="toggleEditExp()">
+            <fa-icon  [icon]="faPenToSquare" class="fa-xl"></fa-icon>
+    </button>
 </div>
+<div>
+    <app-edit-experience
+        *ngIf="mostrarEditExp"
+        [experience]="experience"
+        (toggleEditExpEventEmitter)="toggleEditExp()"></app-edit-experience>
+</div>
+
+

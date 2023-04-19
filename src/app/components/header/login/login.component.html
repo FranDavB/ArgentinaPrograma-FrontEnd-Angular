@@ -1,22 +1,47 @@
-<div class="container">
-    <form (ngSubmit)="login()">
-        <div class="header">
-            <h3>Ingreso</h3>
+<form 
+  class="mt-5 mx-auto" 
+  style="width: 400px;"
+  [formGroup]="formLogin"
+  >
+    <div class="mb-3">
+        <h3>Iniciar sesión</h3>
+    </div>
+    <div class="form-group mb-3">
+      <label for="exampleInputEmail1">Email</label>
+      <input 
+        formControlName="email"
+        type="email" 
+        class="form-control" 
+        id="exampleInputEmail1" 
+        aria-describedby="emailHelp" 
+        placeholder="Enter email"
+        [ngClass]="{'is-invalid': Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}">
+      <div *ngIf= "Email?.errors && Email?.touched">
+        <p *ngIf= "Email?.hasError('required')" class="text-danger">
+          El email es requerido.
+        </p>
+        <p *ngIf ="Email?.hasError('email')" class="text-danger">
+          El formato del email debe ser válido.
+        </p>
+      </div>
+    </div>
+    <div class="form-group mb-3">
+      <label for="exampleInputPassword1">Contraseña</label>
+      <input 
+        formControlName="password"
+        type="password" 
+        class="form-control" 
+        id="exampleInputPassword1" 
+        placeholder="Password"
+        [ngClass]="{'is-invalid': Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched}">
+        <div *ngIf= "Password?.errors && Password?.touched">
+          <p *ngIf= "Password?.hasError('required')" class="text-danger">
+            La contraseña es requerido.
+          </p>
+          <p *ngIf ="Password?.errors?.['minlength']" class="text-danger">
+            La contraseña debe tener un formato de 6 caracteres mínimo.
+          </p>
         </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Correo electrónico</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese correo electrónico">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su contraseña">
-        </div>
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <div class="submit">
-            <button type="submit" class="btn btn-primary btn-submit">Ingresar</button>
-        </div>
-    </form>
-</div>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Ingresar</button>
+  </form>

@@ -1,0 +1,28 @@
+<div class="container">
+    <form (submit)="addExperience()">
+        <div class="header">
+            <h3>Agregar experiencia</h3>
+        </div>
+        <div class="form-control">
+            <div class="form-group">
+                <label for="logourl">Nombre de la empresa</label>
+                <input type="text" class="form-control" id="logourl" [(ngModel)]="name" name="name" placeholder="Ej: una direccion web o directorio local">
+            </div>
+            <div class="form-group">
+                <label for="logourl">Dirección url del logo de la empresa</label>
+                <input type="text" class="form-control" id="logourl" [(ngModel)]="logourl" name="logourl" placeholder="Ej: una direccion web o directorio local">
+            </div>
+            <div class="form-group">
+                <label for="description">Describa su trabajo en la empresa</label>
+                <input type="text" class="form-control" id="description" [(ngModel)]="description" name="description" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="date">Fecha de inicio - Fecha de finalización de contrato</label>
+                <input type="text" class="form-control" id="date" [(ngModel)]="date" name="date"  placeholder="Ej: Enero 2023 - Febrero 2023">
+            </div>
+            <div class="submit">
+                <button type="submit" class="btn btn-primary btn-submit">Enviar</button>
+            </div>
+        </div>
+    </form>
+</div>

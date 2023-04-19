@@ -1,22 +1,29 @@
-main{
-    margin: 10px 50px;
-}
+
 
 .logos{
     display: flex;
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+    border-radius: 5px;
 }
+
 
 .logobutton{
-    margin: auto;
-    border:none;
-    cursor: pointer;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-
+    margin-left: 10px;
+    padding: 10px 20px;
+    color:aliceblue;
 }
 
-.logo{
-    width: 75px;
-    height: auto;
-    filter: grayscale(100%);
+.logobutton:hover{
+    background-color: #777;
 }
+
+
+.editbuttons{
+    display: flex;
+ }
+ 
+ .center{
+     margin: auto;
+ }
