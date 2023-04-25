@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef  } from '@angular/core';
 import { Experiences } from 'src/app/interfaces/experiences';
 import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -6,6 +6,7 @@ import { faSquarePlus, faPenToSquare, faTrash } from '@fortawesome/free-solid-sv
 
 import { DatabaseService } from 'src/app/services/database.service';
 import { CommunicatorService } from 'src/app/services/communicator.service';
+
 
 @Component({
   selector: 'app-experience',
@@ -21,7 +22,6 @@ export class ExperienceComponent implements OnInit {
   faSquarePlus = faSquarePlus;
   faPenToSquare = faPenToSquare;
   faTrash = faTrash;
-  mostrarAddExp: boolean = false;
   id?: number;
   idExpDelete: number = 1;
 
@@ -31,64 +31,83 @@ export class ExperienceComponent implements OnInit {
       private database: DatabaseService,
       private communicator: CommunicatorService,
       private router: Router,
-      private route: ActivatedRoute){}
+      private route: ActivatedRoute,
+      private cdr: ChangeDetectorRef){
+        
+      this.communicatorDeleteExperience();
+
+      this.communicatorEditExperience();
+
+      this.communicatorAddExperience();
+      
+      }
 
   ngOnInit(): void {
 
-    // GET EXPERIENCES//
-    this.database.getExperience().subscribe((dbexperiences) => {
-      this.experiences = dbexperiences;
-      console.log(this.experiences);
-    });
-
-    // DELETE EXPERIENCE//
-    this.communicator.onDeleteExperienceObservable().subscribe((idExp)=>{
-      this.idExpDelete = parseInt(idExp);
-      console.log(this.idExpDelete);
-      this.experience = this.experiences[this.idExpDelete - 1];
-      console.log(this.experience);
-      this.deleteExperience(this.experience);
-
-    })
-
-    // EDIT EXPERIENCE//
-    this.communicator.onEditExperienceObservable().subscribe((editExperience)=>{
-      console.log("Hasta aca todo bien");
-      this.editExperience(editExperience);
-    })
+    this.getExperience();
 
   }
 
-  isActive(a: number){
-    return this.active = !this.active;
+  // CommunicatorService //
+
+  communicatorDeleteExperience(){
+    this.communicator.onDeleteExperienceObservable().subscribe((deleteExp)=>{
+      this.deleteExperience(deleteExp);
+    });
+  }
+
+  communicatorEditExperience(){
+    this.communicator.onEditExperienceObservable().subscribe((editExperience)=>{
+      this.editExperience(editExperience)
+  })
+  }
+
+  communicatorAddExperience(){
+    this.communicator.onAddExperienceObservable().subscribe((newExp)=>{
+      this.addExperience(newExp);
+  })
   }
 
   // Router //
-  onSelect(experience: any){
-    this.router.navigate(['/principal/experiencia', experience.id])
-  }
 
-  toggleMostrarAddExp(){
-    this.mostrarAddExp = !this.mostrarAddExp
+  onSelect(experience: any){
+    this.router.navigate(['/portfolio/experiencia', experience.id])
   }
 
   // Database //
 
+  getExperience(){
+    this.database.getExperience().subscribe((dbexperiences) => {
+      this.experiences = dbexperiences;
+      console.log(this.experiences);
+    });
+  }
+
   addExperience(experiencia: Experiences){
-    console.log(experiencia);
+
     this.database.addExperience(experiencia).subscribe((experience) =>
-      this.experiences.push(experience));
+      this.experiences.push(experience),
+    )
+
+    const indx = this.experiences.find(element => element.id == experiencia.id);
+    this.router.navigate(["/portfolio"]);
+
   }
 
   deleteExperience(experience: Experiences){
+
     this.database.deleteExperience(experience).subscribe(() =>{
-      this.experiences = this.experiences.filter (t => t.id !== experience.id)
+      this.experiences = this.experiences.filter (t => t.id !== experience.id);
     })
-    this.router.navigate(["/principal/experiencia/", this.idExpDelete - 1]);
+
+    this.router.navigate(["/portfolio"]);
   }
 
   editExperience(experience: Experiences){
-    this.database.editExperience(experience).subscribe();
+    this.database.editExperience(experience).subscribe( expEdited => {
+      this.experience = expEdited; 
+      this.router.navigate(["/portfolio", expEdited.id]);
+    })
   }
 
 }

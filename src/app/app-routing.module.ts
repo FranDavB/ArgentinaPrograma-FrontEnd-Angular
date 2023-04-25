@@ -7,7 +7,7 @@ import { AddExperienceComponent } from './components/main/experience/add-experie
 
 
 const routes: Routes = [
-  {path:'',   redirectTo:'portfolio', pathMatch:"full"},
+  {path:'',   redirectTo:'ingresar', pathMatch:"full"},
   {path:'ingresar', component: LoginComponent},
   {path:'portfolio', component: MainComponent,
     children: [

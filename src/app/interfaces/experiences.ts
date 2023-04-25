@@ -5,3 +5,8 @@ export interface Experiences{
     description: string;
     date: string;
 }
+
+export interface Credentials{
+    email: string;
+    password: string;
+}

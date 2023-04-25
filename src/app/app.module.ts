@@ -9,7 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MainComponent } from './components/main/main.component';
 import { AboutComponent } from './components/main/about/about.component';
 import { ExperienceComponent } from './components/main/experience/experience.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { DatabaseService } from './services/database.service';
 import { ElementexpComponent } from './components/main/experience/elementexp/elementexp.component';
@@ -18,6 +18,10 @@ import { LoginComponent } from './components/header/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddExperienceComponent } from './components/main/experience/add-experience/add-experience.component';
 import { EditExperienceComponent } from './components/main/experience/edit-experience/edit-experience.component';
+import { AuthenticationService } from './services/authentication.service';
+import { InterceptorService } from './services/interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +33,8 @@ import { EditExperienceComponent } from './components/main/experience/edit-exper
     ElementexpComponent,
     LoginComponent,
     AddExperienceComponent,
-    EditExperienceComponent
+    EditExperienceComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -38,9 +43,12 @@ import { EditExperienceComponent } from './components/main/experience/edit-exper
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
-  providers: [DatabaseService
+  providers: [DatabaseService,
+    AuthenticationService,
+    {provide: HTTP_INTERCEPTORS, useClass:InterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]
 })

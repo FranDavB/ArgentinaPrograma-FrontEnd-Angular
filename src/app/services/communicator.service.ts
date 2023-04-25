@@ -9,29 +9,43 @@ import { Experiences } from '../interfaces/experiences';
 })
 export class CommunicatorService {
 
-  private subjectNumber = new Subject<number>;
-  private subjectExperience = new Subject<Experiences>;
+  private deleteSubjectExperience = new Subject<Experiences>;
+  private editSubjectExperience = new Subject<Experiences>;
+  private newSubjectExperience = new Subject<Experiences>;
+
+
+
 
   constructor() { }    
 
   // Eliminar una Experiencia//
 
-  onDeleteExperience(idExp: number){    
-     this.subjectNumber.next(idExp);
+  onDeleteExperience(experience: Experiences){    
+     this.deleteSubjectExperience.next(experience);
   }
 
   onDeleteExperienceObservable():Observable<any> {
-    return this.subjectNumber.asObservable();
+    return this.deleteSubjectExperience.asObservable();
   }
 
   // Editar una Experiencia//
 
   onEditExperience(experience: Experiences){
-     this.subjectExperience.next(experience);
+     this.editSubjectExperience.next(experience);
   }
 
   onEditExperienceObservable():Observable<any> {
-    return this.subjectExperience.asObservable();
+    return this.editSubjectExperience.asObservable();
   }
+
+  // Agregar una Experiencia//
+
+  onAddExperience(experience: Experiences){    
+    this.newSubjectExperience.next(experience);
+ }
+
+  onAddExperienceObservable():Observable<any> {
+   return this.newSubjectExperience.asObservable();
+ }
 
 }

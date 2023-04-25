@@ -1,20 +1,11 @@
-.descriptions{
-    padding: 10px 50px;
-}
+
 .logo{
-    width: 150px;
-}
-.descriptions p{
-    text-align: center;
-    padding: 20px;
+    max-height: 150px;
 }
 
-.deleteButton{
-    display: flex;
-}
+.fadeIn{
+        -webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
-.deleteButton button{
-    margin:auto;
 }
-
 

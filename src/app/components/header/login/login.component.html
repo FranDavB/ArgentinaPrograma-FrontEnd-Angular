@@ -2,6 +2,7 @@
   class="mt-5 mx-auto" 
   style="width: 400px;"
   [formGroup]="formLogin"
+  (ngSubmit)="onLogin($event)"
   >
     <div class="mb-3">
         <h3>Iniciar sesión</h3>

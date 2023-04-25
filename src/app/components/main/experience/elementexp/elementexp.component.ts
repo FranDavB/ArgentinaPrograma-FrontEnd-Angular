@@ -9,11 +9,14 @@ import { faSquarePlus, faPenToSquare, faTrash } from '@fortawesome/free-solid-sv
 import { DatabaseService } from 'src/app/services/database.service';
 import { CommunicatorService } from 'src/app/services/communicator.service';
 
+import { trigger, style, transition, animate, state } from '@angular/animations';
+
 
 @Component({
   selector: 'app-elementexp',
   templateUrl: './elementexp.component.html',
-  styleUrls: ['./elementexp.component.css']
+  styleUrls: ['./elementexp.component.css'],
+
 })
 export class ElementexpComponent {
   
@@ -21,6 +24,8 @@ export class ElementexpComponent {
   experience: Experiences = EXPERIENCE[0];
   subscription?: Subscription;
   mostrarEditExp: boolean = false;
+  mostrarAddExp: boolean = false;
+
 
   id?: any;
   logourl: string ="";
@@ -29,6 +34,7 @@ export class ElementexpComponent {
 
   faTrash = faTrash;
   faPenToSquare= faPenToSquare;
+  faSquarePlus= faSquarePlus;
 
   constructor(
     private database: DatabaseService, 
@@ -36,23 +42,38 @@ export class ElementexpComponent {
     private router: Router,
     private communicator: CommunicatorService ){
       
-    this.route.params.subscribe( (data) => {
-        this.id = parseInt(this.route.snapshot.paramMap.get('id') as string);
-        this.database.getExperience().subscribe((dbexperiences) => {
-          this.experiences = dbexperiences;
-          console.log(this.experiences);
-          this.experience = this.experiences[this.id - 1];
-          console.log(this.experience);
+    this.route.params.subscribe( (params) => {
+        const idParam = params['id'];
+
+        this.database.getExperience().subscribe((dbExperiences) => {
+          this.experiences = dbExperiences;
+
+          const protoExp = this.experiences.find(element  => element.id == idParam);
+
+          if(protoExp?.id){
+            this.experience = protoExp;
+            this.id = protoExp.id;
+            console.log('This id ' + this.id)
+          } else {}
         });
+
+
     })
 
   }
 
-  onDeleteExp(id: number){
-    this.communicator.onDeleteExperience(id);
+  onDeleteExp(experience: Experiences){
+    this.communicator.onDeleteExperience(experience);
   }
 
   toggleEditExp(){
     this.mostrarEditExp = !this.mostrarEditExp;
   }
+
+  toggleMostrarAddExp(){
+    this.mostrarAddExp = !this.mostrarAddExp
+  }
+
+
+
 }

@@ -1,28 +1,87 @@
-<div class="container">
-    <form (submit)="addExperience()">
-        <div class="header">
-            <h3>Agregar experiencia</h3>
-        </div>
-        <div class="form-control">
-            <div class="form-group">
-                <label for="logourl">Nombre de la empresa</label>
-                <input type="text" class="form-control" id="logourl" [(ngModel)]="name" name="name" placeholder="Ej: una direccion web o directorio local">
-            </div>
-            <div class="form-group">
-                <label for="logourl">Dirección url del logo de la empresa</label>
-                <input type="text" class="form-control" id="logourl" [(ngModel)]="logourl" name="logourl" placeholder="Ej: una direccion web o directorio local">
-            </div>
-            <div class="form-group">
-                <label for="description">Describa su trabajo en la empresa</label>
-                <input type="text" class="form-control" id="description" [(ngModel)]="description" name="description" placeholder="">
-            </div>
-            <div class="form-group">
-                <label for="date">Fecha de inicio - Fecha de finalización de contrato</label>
-                <input type="text" class="form-control" id="date" [(ngModel)]="date" name="date"  placeholder="Ej: Enero 2023 - Febrero 2023">
-            </div>
-            <div class="submit">
-                <button type="submit" class="btn btn-primary btn-submit">Enviar</button>
-            </div>
-        </div>
-    </form>
+<div class="mb-3">
+    <h3>Agregar experiencia</h3>
 </div>
+<form 
+        (ngSubmit)="addExperience($event)"
+        [formGroup]="addForm">
+
+        <div class="form-group mb-3">
+            <label for="name">Nombre de la empresa</label>
+            <input 
+              formControlName="name"
+              type="text" 
+              class="form-control" 
+              id="name" 
+              aria-describedby="emailHelp" 
+              placeholder="Ingrese nombre de la empresa"
+              [ngClass]="{'is-invalid': Name?.errors && Name?.touched, 'is-valid': !Name?.errors && Name?.touched}">
+            <div *ngIf= "Name?.errors && Name?.touched">
+              <p *ngIf= "Name?.hasError('required')" class="text-danger">
+                El nombre de la empresa es requerido.
+              </p>
+              <p *ngIf ="Name?.hasError('minlength')" class="text-danger">
+                El nombre de la empresa debe tener un mínimo de 3 caracteres.
+              </p>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="logourl">Dirección URL del logo de la empresa</label>
+            <input 
+              formControlName="logourl"
+              type="text" 
+              class="form-control" 
+              id="logourl" 
+              placeholder="Password"
+              [ngClass]="{'is-invalid': Logourl?.errors && Logourl?.touched, 'is-valid': !Logourl?.errors && Logourl?.touched}">
+              <div *ngIf= "Logourl?.errors && Logourl?.touched">
+                <p *ngIf= "Logourl?.hasError('required')" class="text-danger">
+                  La dirección URL es requerida.
+                </p>
+                <p *ngIf ="Logourl?.errors?.['minlength'] || Description?.errors?.['maxlength']" class="text-danger">
+                  La dirección URL debe tener entre 4 y 1000 caracteres.
+                </p>
+              </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="description">Descripción de su rol en la empresa</label>
+            <textarea 
+
+              rows="5" cols="33"
+              formControlName="description"
+              type="description" 
+              class="form-control" 
+              id="description" 
+              placeholder="Ingrese un resumen de la empresa y su rol en la misma en un párrafo."
+              [ngClass]="{'is-invalid': Description?.errors && Description?.touched, 'is-valid': !Description?.errors && Description?.touched}">
+            </textarea>
+              <div *ngIf= "Description?.errors && Description?.touched">
+                <p *ngIf= "Description?.hasError('required')" class="text-danger">
+                  La descripción es requerida.
+                </p>
+                <p *ngIf ="Description?.errors?.['minlength'] || Description?.errors?.['maxlength'] " class="text-danger">
+                  La descripción debe tener entre 10 y 1000 caracteres.
+                </p>
+              </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="date">Período de su trabajo en la empresa</label>
+            <input 
+              formControlName="date"
+              type="text" 
+              class="form-control" 
+              id="date" 
+              placeholder="Ingrese el período de tiempo que trabajó en esta empresa"
+              [ngClass]="{'is-invalid': Date?.errors && Date?.touched, 'is-valid': !Date?.errors && Date?.touched}">
+              <div *ngIf= "Date?.errors && Date?.touched">
+                <p *ngIf= "Date?.hasError('required')" class="text-danger">
+                  El período es requerido.
+                </p>
+                <p *ngIf ="Date?.errors?.['pattern']" class="text-danger">
+                  Debe ingresar un período en formato Mes año - Mes año o Mes año - Actualidad
+                </p>
+              </div>
+          </div>
+          <button type="submit" class="btn btn-primary mb-3">Agregar experiencia</button>
+
+</form>
+
