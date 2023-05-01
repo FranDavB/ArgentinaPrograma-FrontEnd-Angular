@@ -1,4 +1,4 @@
-<main>
+<!-- <main>
     <div>
         <div class="dropdown show">
             <a class="btn btn-secondary btn-nav" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -35,4 +35,52 @@
             </li>
         </ul>
     </div>
-</main>
+</main> -->
+
+<nav class="navbar navbar-expand-sm bg-body-tertiary bg-light p-5">
+  <div class="container-fluid border-bottom">
+    <a class="navbar-brand">
+      <img src="./assets/Img/B.png" width="50" height="50" class="d-inline-block align-top" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav text-center ms-auto">
+        <li class="nav-item ">
+          <a class="nav-link a-link" (click)="navegar('#acerca-de')">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Experiencia</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Formación</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Proyectos</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto text-center">
+        <li class="nav-item">
+            <a class="nav-link" href="" data-bs-target="#myModal" data-bs-toggle="modal">
+              <i class="bi bi-person-fill fa-lg" style="font-size:36px;"></i>
+            </a>
+        </li>
+    </ul>
+    </div>
+  </div>
+</nav>
+
+  <div class="jumbotron jumbotron-fluid cover">
+    <div class="container p-5 vh-50 full-view ">
+
+    <div class="container text-center">
+      <h1 class="display-4 pb-4 font-weight-bold">¡Bienvenido!</h1>
+      <p class="lead pb-4">Éste es mi portfolio web. Aquí verás un resumen de mí y las maneras para contactarme.</p>
+      <button class="btn btn-dark" (click)="navegar('#acerca-de')">
+        ¡Conóceme!
+      </button>
+    </div>
+  </div>
+</div>
+

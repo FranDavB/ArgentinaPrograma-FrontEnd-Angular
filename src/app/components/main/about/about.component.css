@@ -1,18 +1,12 @@
-main{
-    display: flex;
-    padding-top: 50px;
+
+.photo{
+    max-height: 300px;
 }
 
-.info{
-    margin: auto;
-    text-align: justify;
+.description{
+    font-size: 16px;
 }
 
-img.photo{
-    width: 400px;
-    margin-right: 50px;
-    border-radius: 50px;
-    filter: grayscale(75%);
-
-    backdrop-filter: blur(10px);
+.cover{
+    height: 75vh;
 }

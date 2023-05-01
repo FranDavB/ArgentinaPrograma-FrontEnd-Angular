@@ -1,47 +1,8 @@
-main{
-    display: flex;
-    background-color: #109DFA;
-    padding: 10px 30px;
-    color:white;
+.cover{
+    height: 75vh;
 }
 
-div{
-    margin: auto;
+.a-link{
+    cursor: pointer;
 }
 
-.btn-nav{
-    background-color: transparent;
-    border:none;
-}
-
-.dropdown-item{
-    border-left: 3px solid red;
-    margin-bottom: 1px;
-}
-
-ul{
-    list-style-type: none;
-}
-
-li{
-    float:left;
-    margin-right: 10px;
-}
-
-a:link{
-    color: inherit;
-}
-
-a:visited{
-    color: inherit;
-}
-
-.login{
-    border:none;
-    background-color: transparent;
-    color:inherit;
-}
-
-.faCanadianMapleLeaf{
-    color: yellow;
-}

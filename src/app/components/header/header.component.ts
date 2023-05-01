@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faBars, faRightFromBracket, faSun } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faDiscord, faGoogle, faCanadianMapleLeaf } from '@fortawesome/free-brands-svg-icons';
 import {Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -17,32 +18,19 @@ export class HeaderComponent implements OnInit {
   faRightToBracket= faRightFromBracket;
   faCanadianMapleLeaf= faSun;
 
-  constructor(private responsive: BreakpointObserver) {
+  constructor(
+    private responsive: BreakpointObserver,
+    private router: Router) {
   }
 
   ngOnInit(): void {
-    console.log('Web ' + Breakpoints.Web);
-    console.log('WebLandscape ' + Breakpoints.WebLandscape);
-    console.log('WebPortrait ' + Breakpoints.WebPortrait);
+  }
 
-    console.log('Tablet ' + Breakpoints.Tablet);
-    console.log('TabletPortrait ' + Breakpoints.TabletPortrait);
-    console.log('TabletLandscape ' + Breakpoints.TabletLandscape);
-
-    console.log('Handset ' + Breakpoints.Handset);
-    console.log('HandsetLandscape ' + Breakpoints.HandsetLandscape);
-    console.log('HandsetPortrait ' + Breakpoints.HandsetPortrait);
-
-    console.log('XSmall ' + Breakpoints.XSmall);
-    console.log('Small ' + Breakpoints.Small);
-    console.log('Medium ' + Breakpoints.Medium);
-    console.log('Large ' + Breakpoints.Large);
-    console.log('XLarge ' + Breakpoints.XLarge);
-    this.responsive.observe(Breakpoints.HandsetLandscape).subscribe(result =>{
-      if (result.matches) {
-        console.log("screens matches HandsetLandscape");
-      }
-    })
+  navegar(idDestino: string){
+    const elementoDestino = document.querySelector(idDestino);
+    if (elementoDestino) {
+      elementoDestino.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
 }
