@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { faBars, faRightFromBracket, faSun } from '@fortawesome/free-solid-svg-icons'
-import { faFacebook, faDiscord, faGoogle, faCanadianMapleLeaf } from '@fortawesome/free-brands-svg-icons';
 import {Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
 
@@ -10,13 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  faBars = faBars;
-  faDiscord = faDiscord;
-  faGoogle = faGoogle;
-  faFacebook= faFacebook;
-  faRightToBracket= faRightFromBracket;
-  faCanadianMapleLeaf= faSun;
 
   constructor(
     private responsive: BreakpointObserver,
