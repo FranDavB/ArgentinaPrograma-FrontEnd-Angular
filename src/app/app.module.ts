@@ -21,6 +21,7 @@ import { EditExperienceComponent } from './components/main/experience/edit-exper
 import { AuthenticationService } from './services/authentication.service';
 import { InterceptorService } from './services/interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditAboutComponent } from './components/main/about/edit-about/edit-about.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     AddExperienceComponent,
     EditExperienceComponent,
+    EditAboutComponent,
     
   ],
   imports: [

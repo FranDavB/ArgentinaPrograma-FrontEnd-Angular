@@ -28,5 +28,16 @@
       "date": "Enero 2023 - Febrero 2023",
       "id": 4
     }
+  ],
+  "about": [
+    {
+      "id": 1,
+      "photoURL": "/assets/Img/Foto.jpg",
+      "name": "Franco David Baretta",
+      "profession": "Junior Web Developer y Biólogo",
+      "description": "Soy un aficionado a la programación y actualmente me encuentro realizando el curso de programación web de Argentina Programa. Por otro lado soy estudiante de biología en la Universidad Nacional de Córdoba, donde me especializo en el estudio del comportamiento animal. En mis ratos libres diseño páginas web, ahondo en temas de las neurociencias e historia.",
+      "city": "Córdoba",
+      "country": "Argentina"
+    }
   ]
 }

@@ -2,32 +2,42 @@
 <div class="container p-4 border-bottom">
     <h2 #tituloAbout class="text-center " id="acerca-de">
         Acerca de mí
-        <button class="btn">
-            <i class="bi bi-pencil-square" style="font-size:24px;"></i>
-        </button>
     </h2>
 </div>
-<div class="jumbotron jumbotron-fluid m-5 cover" data-aos="fade-up">
+<div 
+    class="jumbotron jumbotron-fluid m-5 cover" 
+    data-aos="fade-up"
+    *ngIf="!mostrarEditAbout">
     <div class="container p-2">
         <div class="row">
             <div class="col-lg-4">
-                <img src="/assets/Img/Foto.jpg" class="photo rounded d-block mx-auto" alt="photo">
+                <img src="{{about.photoURL}}" class="photo rounded d-block mx-auto img-fluid" alt="photo">
             </div>
             <div class="col-lg-8">
                 <h5 class="mt-2 mb-4">
-                    Franco Baretta - Junior developer y Biólogo.
+                    {{about.name}} - {{about.profession}}
                 </h5>
                 <p class="lead  description mb-4 text-justify">
-                    Soy un aficionado a la programación y actualmente me encuentro realizando
-                    el curso de programación web de Argentina Programa. Por otro lado soy 
-                    estudiante de biología en la Universidad Nacional de Córdoba, donde me 
-                    especializo en el estudio del comportamiento animal. En mis ratos libres
-                    diseño páginas web, ahondo en temas de las neurociencias e historia. 
+                    {{about.description}}
                 </p>
                 <p class="lead description text-justify">
-                    Actualmente vivo en Córdoba, Argentina.
+                    Actualmente vivo en {{about.city}}, {{about.country}}.
                 </p>
+                <div class="text-center">
+                    <button 
+                        class="btn"
+                        (click)="toggleEditAbout()">
+                            <i class="bi bi-pencil-square" style="font-size:24px;"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+<div container p-5>
+    <app-edit-about
+        *ngIf="mostrarEditAbout"
+        (toggleEditAboutEventEmitter)="toggleEditAbout()">
+    </app-edit-about>
 </div>

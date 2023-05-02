@@ -2,21 +2,30 @@
 
 import { Injectable, EventEmitter } from '@angular/core';
 import { Subscription, Subject, Observable } from 'rxjs';
-import { Experiences } from '../interfaces/experiences';
+import { About, Experiences } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommunicatorService {
 
+  // ACERCA DE //
+
+  private editSubjectAbout = new Subject<About>;
+
+  onEditAbout(about: About){
+    this.editSubjectAbout.next(about);
+  }
+
+  OnEditAboutObservable():Observable<any> {
+    return this.editSubjectAbout.asObservable();
+  }
+
+  // EXPERIENCIAS//
+
   private deleteSubjectExperience = new Subject<Experiences>;
   private editSubjectExperience = new Subject<Experiences>;
   private newSubjectExperience = new Subject<Experiences>;
-
-
-
-
-  constructor() { }    
 
   // Eliminar una Experiencia//
 

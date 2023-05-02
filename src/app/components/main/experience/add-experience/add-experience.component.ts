@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { Experiences } from 'src/app/interfaces/experiences';
+import { Experiences } from 'src/app/interfaces/interfaces';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommunicatorService } from 'src/app/services/communicator.service';

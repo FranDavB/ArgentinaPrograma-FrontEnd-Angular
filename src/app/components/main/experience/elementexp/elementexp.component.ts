@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Experiences } from 'src/app/interfaces/experiences';
+import { Experiences } from 'src/app/interfaces/interfaces';
 import { EXPERIENCE } from 'src/app/interfaces/EXPERIENCE';
 import { Subscription } from 'rxjs';
 import { faSquarePlus, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';

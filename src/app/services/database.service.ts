@@ -2,10 +2,10 @@
 
 import { Injectable } from '@angular/core';
 
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import { Experiences } from '../interfaces/experiences';
+import { About, Experiences } from '../interfaces/interfaces';
 
 import { map } from 'rxjs';
 
@@ -22,9 +22,25 @@ export class DatabaseService {
 
   constructor(private http: HttpClient) { }
 
-  private apiExperienceUrl = 
-  "http://localhost:8080/api";
-//  "http://localhost:3000/experiences";
+  private apiExperienceUrl = "http://localhost:8080/api";
+   private apiPrueba = "http://localhost:3000";
+
+   // ABOUT //
+
+   getAbout(): Observable<About[]> {
+    return this.http.get<About[]>(this.apiPrueba + "/about");
+   }
+
+   editAbout(about: About) : Observable<About> {
+
+    const url = `${this.apiPrueba}/about/${about.id}`;
+    return this.http.put<About>(url,about,httpOptions).pipe(map(
+      response => response as About
+    )
+
+    )
+  }   
+   // EXPERIENCES //
   
   getExperience(): Observable<Experiences[]> {
 

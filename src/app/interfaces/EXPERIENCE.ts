@@ -1,4 +1,4 @@
-import { Experiences } from "./experiences"
+import { Experiences } from "./interfaces"
 export const EXPERIENCE= [
 
 ]

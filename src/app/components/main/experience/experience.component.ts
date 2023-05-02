@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef  } from '@angular/core';
-import { Experiences } from 'src/app/interfaces/experiences';
+import { Experiences } from 'src/app/interfaces/interfaces';
 import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { faSquarePlus, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
