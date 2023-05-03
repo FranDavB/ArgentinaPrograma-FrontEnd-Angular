@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
 import { Credentials } from 'src/app/interfaces/interfaces';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   creds: Credentials = {
     email: '',
@@ -28,6 +29,15 @@ export class LoginComponent {
       }
     )
   }
+
+  ngOnInit(): void {
+    AOS.init({
+      duration: 1000,
+      offset: 200
+    });
+  }
+
+
 
   get Email(){
     return this.formLogin.get("email");

@@ -22,6 +22,8 @@ import { AuthenticationService } from './services/authentication.service';
 import { InterceptorService } from './services/interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditAboutComponent } from './components/main/about/edit-about/edit-about.component';
+import { FormationComponent } from './components/main/formation/formation.component';
+import { ElementFormationComponent } from './components/main/formation/element-formation/element-formation.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { EditAboutComponent } from './components/main/about/edit-about/edit-abou
     AddExperienceComponent,
     EditExperienceComponent,
     EditAboutComponent,
+    FormationComponent,
+    ElementFormationComponent,
     
   ],
   imports: [

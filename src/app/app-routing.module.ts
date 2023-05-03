@@ -3,18 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { ElementexpComponent } from './components/main/experience/elementexp/elementexp.component';
 import { LoginComponent } from './components/header/login/login.component';
 import { MainComponent } from './components/main/main.component';
-import { AddExperienceComponent } from './components/main/experience/add-experience/add-experience.component';
-import { AboutComponent } from './components/main/about/about.component';
+import { ElementFormationComponent } from './components/main/formation/element-formation/element-formation.component';
 
 
 const routes: Routes = [
-  //{path:'',   redirectTo:'ingresar', pathMatch:"full"},
+  {path:'',   redirectTo:'portfolio', pathMatch:"full"},
   {path:'ingresar', component: LoginComponent},
   {path:'portfolio', component: MainComponent,
     children: [
       {path:'experiencia/:id', component: ElementexpComponent},
-      {path:'experiencia/agregar-experiencia', component: AddExperienceComponent},
-      {path:'acerca-de', component: AboutComponent}
+      {path:'acerca-de/:id', component: ElementFormationComponent},
     ]},
 
 

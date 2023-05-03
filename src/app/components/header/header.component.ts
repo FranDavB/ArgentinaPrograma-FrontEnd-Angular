@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
     const elementoDestino = document.querySelector(idDestino);
     if (elementoDestino) {
       elementoDestino.scrollIntoView({ behavior: 'smooth' });
-    }
+    } 
   }
 
 }

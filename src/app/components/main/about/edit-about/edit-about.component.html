@@ -128,8 +128,8 @@
                     </div>
             </div>
         </div>
-        <div class="text-center">
-            <button type="submit" class="btn btn-primary mt-4">Guardar cambios</button>
+        <div class="text-center" >
+            <button type="submit" class="btn btn-primary mt-4" [disabled]="!editForm.valid">Guardar cambios</button>
         </div>
     </form>
 </div>

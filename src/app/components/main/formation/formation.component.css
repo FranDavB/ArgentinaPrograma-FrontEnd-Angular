@@ -1,0 +1,18 @@
+.cover{
+    min-height: 75vh;
+}
+
+.logo{
+    max-height: 200px;
+}
+
+.nav-pills .nav-link.active {
+    background-color: black;
+    cursor: pointer;
+}
+
+.nav-pills .nav-link:not(.active) {
+    color:black;
+    cursor: pointer;
+
+}
