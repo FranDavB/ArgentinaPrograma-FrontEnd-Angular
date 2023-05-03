@@ -20,3 +20,12 @@ export interface About{
     city: string;
     country: string;
 }
+
+export interface Formation{
+    id?: number;
+    title: string;
+    description: string;
+    logoAcademy: string;
+    startDate: string;
+    endDate: string;
+}

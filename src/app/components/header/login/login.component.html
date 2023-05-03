@@ -42,10 +42,10 @@
           [ngClass]="{'is-invalid': Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched}">
           <div *ngIf= "Password?.errors && Password?.touched">
             <p *ngIf= "Password?.hasError('required')" class="text-danger">
-              La contraseña es requerido.
+              La contraseña es requerida.
             </p>
             <p *ngIf ="Password?.errors?.['minlength']" class="text-danger">
-              La contraseña debe tener un formato de 6 caracteres mínimo.
+              La contraseña debe tener un formato de 5 caracteres mínimo.
             </p>
           </div>
       </div>

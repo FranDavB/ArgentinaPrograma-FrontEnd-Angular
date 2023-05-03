@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditAboutComponent } from './components/main/about/edit-about/edit-about.component';
 import { FormationComponent } from './components/main/formation/formation.component';
 import { ElementFormationComponent } from './components/main/formation/element-formation/element-formation.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ElementFormationComponent } from './components/main/formation/element-f
     EditAboutComponent,
     FormationComponent,
     ElementFormationComponent,
+    FooterComponent,
     
   ],
   imports: [
