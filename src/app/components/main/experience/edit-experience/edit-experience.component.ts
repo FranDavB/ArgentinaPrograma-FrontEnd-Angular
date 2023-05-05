@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { EXPERIENCE } from 'src/app/interfaces/EXPERIENCE';
 import { Experiences } from 'src/app/interfaces/interfaces';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CommunicatorService } from 'src/app/services/communicator.service';
+import { CommunicatorService } from 'src/app/services/experiences/communicator-experience.service';
 
 @Component({
   selector: 'app-edit-experience',

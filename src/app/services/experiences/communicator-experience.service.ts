@@ -2,7 +2,7 @@
 
 import { Injectable, EventEmitter } from '@angular/core';
 import { Subscription, Subject, Observable } from 'rxjs';
-import { About, Experiences } from '../interfaces/interfaces';
+import { About, Experiences } from '../../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'

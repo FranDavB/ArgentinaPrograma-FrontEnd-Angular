@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import { About, Experiences } from '../interfaces/interfaces';
+import { About, Experiences } from '../../interfaces/interfaces';
 
 import { map } from 'rxjs';
 

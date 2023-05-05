@@ -4,8 +4,8 @@ import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { faSquarePlus, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-import { DatabaseService } from 'src/app/services/database.service';
-import { CommunicatorService } from 'src/app/services/communicator.service';
+import { DatabaseService } from 'src/app/services/experiences/database.service';
+import { CommunicatorService } from 'src/app/services/experiences/communicator-experience.service';
 
 
 @Component({

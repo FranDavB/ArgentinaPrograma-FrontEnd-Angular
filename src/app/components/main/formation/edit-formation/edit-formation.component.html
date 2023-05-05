@@ -1,0 +1,115 @@
+<div 
+  class="mb-3 mt-3 container text-center"
+  data-aos="fade-up">
+    <h3>Agregar formación</h3>
+</div>
+<div 
+  class="container p-5 form"
+  data-aos="fade-up">
+    <form
+        (ngSubmit)="onEditFormation($event); toggleMostrarEditFormation()"
+        [formGroup]="editForm">
+        <div class="mb-3">
+            <label for="titleFormation" class="form-label">Título adquirido</label>
+            <input
+                formControlName="title"  
+                type="text" 
+                class="form-control" 
+                id="titleFormation" 
+                aria-describedby="nameHelp"
+                placeholder="Ingrese el nombre del título"
+                [ngClass]="{'is-invalid': Title?.errors && Title?.touched, 'is-valid': !Title?.errors && Title?.touched}">
+            <div *ngIf= "Title?.errors && Title?.touched">
+              <p *ngIf= "Title?.hasError('required')" class="text-danger">
+                Debe ingresar el título logrado.
+              </p>
+              <p *ngIf ="Title?.hasError('minlength')" class="text-danger">
+                Debe contener más de 3 caracteres.
+              </p>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="descriptionTitle" class="form-label">Descripción de sus conocimientos</label>
+            <textarea 
+                rows="5" cols="33"
+                formControlName="description"  
+                type="text" 
+                class="form-control" 
+                id="descriptionTitle" 
+                aria-describedby="professionHelp"
+                placeholder="Ingrese una descripción sobre las temáticas aprendidas al lograr dicho título."
+                [ngClass]="{'is-invalid': Description?.errors && Description?.touched, 'is-valid': !Description?.errors && Description?.touched}">
+            </textarea>
+            <div *ngIf= "Description?.errors && Description?.touched">
+                <p *ngIf= "Description?.hasError('required')" class="text-danger">
+                  La descripción es requerida.
+                </p>
+                <p *ngIf ="Description?.errors?.['minlength'] || Description?.errors?.['maxlength'] " class="text-danger">
+                  La descripción debe tener entre 100 y 600 caracteres.
+                </p>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="logoAcademy" class="form-label">URL del logo institucional</label>
+            <input
+                formControlName="logoAcademy" 
+                type="text" 
+                class="form-control" 
+                id="logoAcademy" 
+                aria-describedby="photoURLHelp"
+                placeholder="Ingrese la URL del logo de la academia que certificó el título"
+                [ngClass]="{'is-invalid': LogoAcademy?.errors && LogoAcademy?.touched, 'is-valid': !LogoAcademy?.errors && LogoAcademy?.touched}">
+            <div *ngIf= "LogoAcademy?.errors && LogoAcademy?.touched">
+              <p *ngIf= "LogoAcademy?.hasError('required')" class="text-danger">
+                Debe ingresar la URL del logo institucional.
+              </p>
+              <p *ngIf ="LogoAcademy?.hasError('minlength') || LogoAcademy?.errors?.['maxlength'] " class="text-danger">
+                La URL debe contener entre 10 y 1000 caracteres
+              </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-6">
+                <label for="startDate" class="form-label">Año de inicio del curso</label>
+                <input 
+                    formControlName="startDate"  
+                    type="text" 
+                    class="form-control" 
+                    id="startDate" 
+                    aria-describedby="startDateHelp"
+                    placeholder="Ingrese el año de inicio de la cursada. Ej: 2023"
+                    [ngClass]="{'is-invalid': StartDate?.errors && StartDate?.touched, 'is-valid': !StartDate?.errors && StartDate?.touched}">
+                    <div *ngIf= "StartDate?.errors && StartDate?.touched">
+                      <p *ngIf= "StartDate?.hasError('required')" class="text-danger">
+                        Debe ingresar el año de inicio de la cursada.
+                      </p>
+                      <p *ngIf ="StartDate?.hasError('minlength') || StartDate?.hasError('maxLength') " class="text-danger">
+                        El año de inicio de la cursada debe tener 4 caracteres.
+                      </p>
+                    </div>
+            </div>
+            <div class="mb-3 col-6">
+              <label for="endDate" class="form-label">Año de finalización del curso</label>
+              <input 
+                  formControlName="endDate"  
+                  type="text" 
+                  class="form-control" 
+                  id="endDate" 
+                  aria-describedby="endDateHelp"
+                  placeholder="Ingrese el año de finalización de la cursada. Ej: 2023"
+                  [ngClass]="{'is-invalid': EndDate?.errors && EndDate?.touched, 'is-valid': !EndDate?.errors && EndDate?.touched}">
+                  <div *ngIf= "EndDate?.errors && EndDate?.touched">
+                    <p *ngIf= "EndDate?.hasError('required')" class="text-danger">
+                      Debe ingresar el año de finalización del curso.
+                    </p>
+                    <p *ngIf ="EndDate?.hasError('minlength') || EndDate?.hasError('maxLength') " class="text-danger">
+                       Año de finalización de la cursada debe tener 4 caracteres.
+                    </p>
+                  </div>
+            </div>
+        </div>
+        <div class="text-center" >
+            <button type="submit" class="btn btn-primary mt-4" [disabled]="!editForm.valid">Guardar cambios</button>
+        </div>
+    </form>
+</div>

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CommunicatorService } from 'src/app/services/communicator.service';
+import { CommunicatorService } from 'src/app/services/experiences/communicator-experience.service';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class EditAboutComponent {
       this.editForm = this.formBuilder.group(
         {
           id: ['1'],
-          photoURL: ['', [Validators.required, Validators.minLength(10)]],
+          photoURL: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(1000)]],
           name: ['', [Validators.required, Validators.minLength(3)]],
           profession: ['', [Validators.required, Validators.minLength(3)]],
           description: ['', [Validators.required, Validators.minLength(100), Validators.maxLength(1000)]],

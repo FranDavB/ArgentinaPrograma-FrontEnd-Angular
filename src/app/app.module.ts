@@ -11,7 +11,7 @@ import { AboutComponent } from './components/main/about/about.component';
 import { ExperienceComponent } from './components/main/experience/experience.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
-import { DatabaseService } from './services/database.service';
+import { DatabaseService } from './services/experiences/database.service';
 import { ElementexpComponent } from './components/main/experience/elementexp/elementexp.component';
 import { LoginComponent } from './components/header/login/login.component';
 
@@ -25,6 +25,8 @@ import { EditAboutComponent } from './components/main/about/edit-about/edit-abou
 import { FormationComponent } from './components/main/formation/formation.component';
 import { ElementFormationComponent } from './components/main/formation/element-formation/element-formation.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AddFormationComponent } from './components/main/formation/add-formation/add-formation.component';
+import { EditFormationComponent } from './components/main/formation/edit-formation/edit-formation.component';
 
 
 @NgModule({
@@ -42,6 +44,8 @@ import { FooterComponent } from './components/footer/footer.component';
     FormationComponent,
     ElementFormationComponent,
     FooterComponent,
+    AddFormationComponent,
+    EditFormationComponent,
     
   ],
   imports: [

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
 import { ABOUT } from 'src/app/interfaces/ABOUT';
 import { About } from 'src/app/interfaces/interfaces';
-import { CommunicatorService } from 'src/app/services/communicator.service';
-import { DatabaseService } from 'src/app/services/database.service';
+import { CommunicatorService } from 'src/app/services/experiences/communicator-experience.service';
+import { DatabaseService } from 'src/app/services/experiences/database.service';
 
 @Component({
   selector: 'app-about',

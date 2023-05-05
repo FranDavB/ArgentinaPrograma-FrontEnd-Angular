@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CommunicatorService } from './communicator.service';
+import { CommunicatorService } from './communicator-experience.service';
 
 describe('CommunicatorService', () => {
   let service: CommunicatorService;

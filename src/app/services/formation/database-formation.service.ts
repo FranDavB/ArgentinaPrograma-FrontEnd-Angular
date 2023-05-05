@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Formation } from '../interfaces/interfaces';
+import { Formation } from '../../interfaces/interfaces';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,9 +19,7 @@ export class DatabaseFormationService {
   constructor(private http: HttpClient) { }
 
   getFormation(): Observable<Formation[]> {
-    return this.http.get<Formation[]>(this.apiPrueba + "/formation"
-    );
-
+    return this.http.get<Formation[]>(this.apiPrueba + "/formation");
   }
 
   addFormation(newFormation: Formation): Observable<Formation>{
