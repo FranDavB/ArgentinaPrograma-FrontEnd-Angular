@@ -44,16 +44,16 @@
     {
       "id": 1,
       "title": "Biólogo",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "description": "He desarrollado conocimientos teóricos y prácticos en una gran variedad de temáticas. Desde la célula y el mundo microscópico, a los individuos y sus sistemas, fisiología y comportamiento, hasta llegar a la ecología de poblaciones y comunidades. También tengo conocimientos básicos en taxonomía, geología y biogeografía.",
       "logoAcademy": "https://difusion.pci.unc.edu.ar/unc/files/identidad_visual/unc1_a.jpg",
       "startDate": "2016",
-      "endDate": "Actualidad"
+      "endDate": "2023"
     },
     {
       "id": "2",
       "title": "Web Developer",
-      "description": "asd asd asd asd asd asd asd as das asd asd asd asd asd asd as das dasd as das asd asd asd asdasd asd as as as d",
-      "logoAcademy": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Escudo_del_Club_Atl%C3%A9tico_Boca_Juniors.svg/289px-Escudo_del_Club_Atl%C3%A9tico_Boca_Juniors.svg.png",
+      "description": "He desarrollado conocimientos teóricos y prácticos relativos al desarrollo integral de una aplicación web. Frontend basado en Angular, Backend en Java y utilizando SQL como base de datos. También adquirí nociones básicas en seguridad virtual, frontend estático y metodologías de trabajo en grupo.",
+      "logoAcademy": "https://scontent.fcor10-4.fna.fbcdn.net/v/t39.30808-6/300846334_102048172639807_8682311619358098660_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=sBqV0bNFXIQAX9XYdsy&_nc_ht=scontent.fcor10-4.fna&oh=00_AfAkRj5CS3Uae9iAAcpHoMuvG8Had0I4pk9nN2JWH0OeRQ&oe=645A4B34",
       "startDate": "2022",
       "endDate": "2023"
     }
