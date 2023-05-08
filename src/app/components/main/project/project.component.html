@@ -1,0 +1,42 @@
+<div class="bgn">
+  <div class="container p-4 border-bottom">
+      <h2 class="text-center " id="proyectos">
+          Proyectos
+      </h2>
+  </div>
+  <div class="container mt-4 p-5 cover" >
+    <nav class="nav nav-pills justify-content-center flex-column flex-lg-row text-center" data-aos="fade-up">
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a 
+          class="nav-link mb-3" 
+          *ngFor="let project of projects"
+          data-bs-toggle="tab" 
+          [attr.data-bs-target]="'#project' + project.id"
+          (click)="toggleProjectSelected()">
+          {{project.title}}
+        </a>
+      </div>
+    </nav>
+    <div class="row" *ngIf="!projectSelected">
+      <div class="mt-2 p-5 text-center border-top border-bottom" data-aos="fade-up">
+          <h6>
+              Por favor, seleccione una formación académica
+              para poder visualizarla.
+          </h6>
+      </div>
+    </div>
+    <div class="tab-content" id="nav-tabContent">
+      <div 
+        *ngFor="let project of projects"
+        class="tab-pane fade show" 
+        [id]="'project' + project.id" 
+        role="tabpanel" 
+        aria-labelledby="nav-home-tab"> 
+        <app-element-project
+          [project]="project"
+          [canDelete]="canDelete">
+        </app-element-project>
+      </div>  
+    </div>
+  </div>  
+</div>

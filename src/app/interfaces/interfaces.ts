@@ -29,3 +29,11 @@ export interface Formation{
     startDate: string;
     endDate: string;
 }
+
+export interface Project{
+    id?: number;
+    imageProject: string;
+    title:string;
+    description: string;
+    url: string;
+}

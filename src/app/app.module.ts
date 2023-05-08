@@ -27,6 +27,10 @@ import { ElementFormationComponent } from './components/main/formation/element-f
 import { FooterComponent } from './components/footer/footer.component';
 import { AddFormationComponent } from './components/main/formation/add-formation/add-formation.component';
 import { EditFormationComponent } from './components/main/formation/edit-formation/edit-formation.component';
+import { ProjectComponent } from './components/main/project/project.component';
+import { ElementProjectComponent } from './components/main/project/element-project/element-project.component';
+import { AddProjectComponent } from './components/main/project/add-project/add-project.component';
+import { EditProjectComponent } from './components/main/project/edit-project/edit-project.component';
 
 
 @NgModule({
@@ -46,6 +50,10 @@ import { EditFormationComponent } from './components/main/formation/edit-formati
     FooterComponent,
     AddFormationComponent,
     EditFormationComponent,
+    ProjectComponent,
+    ElementProjectComponent,
+    AddProjectComponent,
+    EditProjectComponent,
     
   ],
   imports: [

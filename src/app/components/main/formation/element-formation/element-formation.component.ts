@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as AOS from 'aos';
 import { Subscription } from 'rxjs';
@@ -26,30 +26,16 @@ export class ElementFormationComponent implements OnInit{
     private database: DatabaseFormationService, 
     private route: ActivatedRoute, 
     private communicator: CommunicatorFormationService
-  ){
-    this.route.params.subscribe( (params) => {
+  ){}
 
-      const idParam = params['id'];
-      this.database.getFormation().subscribe((dbFormation) => {
-        const protoFormation = dbFormation.find(element  => element.id == idParam);
+  @Input() formation: Formation = FORMATION[0];
+  @Input() formations: Formation[] = [];
+  @Input() canDelete: boolean = false;
 
-        if(protoFormation?.id){
-          this.formation = protoFormation;
-          //this.id -> por si las
-        } 
 
-        if(dbFormation.length == 1){
-          this.canDelete = false;
-        }
-      });
-    })
-  }
-
-  formation: Formation = FORMATION[0];
   subscription?: Subscription;
   mostrarEditFormation: boolean = false;
   mostrarAddFormation: boolean = false;
-  canDelete: boolean = true; 
 
   onDeleteFormation(formation: Formation){
     this.communicator.onDeleteFormation(formation);

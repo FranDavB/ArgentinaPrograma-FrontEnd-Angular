@@ -4,10 +4,6 @@
     min-height: 75vh;
 }
 
-.logo{
-    max-height: 200px;
-}
-
 .nav-pills .nav-link.active {
     border-radius: 0;
     color: black;
@@ -21,4 +17,3 @@
     cursor: pointer;
 
 }
-

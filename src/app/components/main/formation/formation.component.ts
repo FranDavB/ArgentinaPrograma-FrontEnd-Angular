@@ -4,7 +4,6 @@ import * as AOS from 'aos';
 import { Formation } from 'src/app/interfaces/interfaces';
 import { CommunicatorFormationService } from 'src/app/services/formation/communicator-formation.service';
 import { DatabaseFormationService } from 'src/app/services/formation/database-formation.service';
-import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-formation',
@@ -17,7 +16,6 @@ export class FormationComponent implements OnInit {
 
     this.database.getFormation().subscribe((dbformations) => {
       this.formations = dbformations;
-      this.checkFormationSelected();
     });
 
     this.communicator.onAddFormationObservable().subscribe((newExp)=>{
@@ -43,28 +41,10 @@ export class FormationComponent implements OnInit {
     public router: Router,
     private database: DatabaseFormationService,
     private communicator: CommunicatorFormationService
-  ){
-    
-  }
-
+  ){}
 
   formations: Formation[] = []
   formationSelected: boolean = false;
-
-  onSelect(formation: any){
-    this.router.navigate(['/portfolio/formación', formation.id]).then(() => {
-      this.formationSelected = true;
-    });
-  }
-
-  checkFormationSelected() {
-    const url = this.router.url;
-    if (url.includes('/formación/')) {
-      this.formationSelected = true;
-    } else {
-      this.formationSelected = false;
-    }
-  }
 
   getFormations(){
     this.database.getFormation().subscribe((dbformations) => {
@@ -74,22 +54,32 @@ export class FormationComponent implements OnInit {
 
   addFormation(formation: Formation){
     this.database.addFormation(formation).subscribe((newFormation) =>
-      this.formations.push(newFormation),
-    )
-    this.router.navigate(["/portfolio"]);
+      this.formations.push(newFormation))
   }
 
   deleteFormation(formation: Formation){
     this.database.deleteFormation(formation).subscribe(() =>{
       this.formations = this.formations.filter (t => t.id !== formation.id);
     })
-    this.router.navigate(["/portfolio"]);
   }
 
   editFormation(formation: Formation){
-    this.database.editFormation(formation).pipe(
-      switchMap(() => this.router.navigate(['portfolio/formación/', formation.id]))
-      ).subscribe();
+    this.database.editFormation(formation).subscribe(() => {
+      const index = this.formations.findIndex(f => f.id === formation.id);
+      if (index !== -1) {
+        this.formations[index] = formation;
+      } else {
+        this.formations.push(formation);
+      }
+    });
   }
 
+  toggleFormationSelected(){
+    this.formationSelected = true;
+  }
+
+
+  get canDelete(): boolean{
+    return this.formations.length >= 2;
+  }
 }

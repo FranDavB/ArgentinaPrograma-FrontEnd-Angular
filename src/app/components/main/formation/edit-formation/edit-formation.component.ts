@@ -28,7 +28,7 @@ export class EditFormationComponent {
           description: ['', [Validators.required, Validators.minLength(100), Validators.maxLength(600)]],
           logoAcademy: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(1000)]],
           startDate: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
-          endDate: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
+          endDate: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4),]],
         }
       )
   }
@@ -44,6 +44,7 @@ export class EditFormationComponent {
 
   toggleMostrarEditFormation(){
     this.toggleEditFormationEventEmitter.emit();
+    console.log('toggleMostrarEditFormation en  editformation funciona correctamente')
   }
 
   get Title(){
