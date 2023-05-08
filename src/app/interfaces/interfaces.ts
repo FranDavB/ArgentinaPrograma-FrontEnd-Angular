@@ -37,3 +37,9 @@ export interface Project{
     description: string;
     url: string;
 }
+
+export interface Skill{
+    id?: number;
+    title: string;
+    percentage: number;
+}

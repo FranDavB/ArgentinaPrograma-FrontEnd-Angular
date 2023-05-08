@@ -1,0 +1,35 @@
+<!--Falta la funcionalidad de los botones-->
+<div class="col">
+    <div class="pb-3" *ngIf="!mostrarEditSkill && !mostrarAddSkill">
+        <h6 class="pb-4 border-bottom">{{skill.title}}</h6>
+        <svg class="progress-circle" viewBox="0 0 100 100" style="width: 150px; height: 150px;">
+            <circle class="progress-circle__bg" cx="50" cy="50" r="45" />
+            <circle class="progress-circle__bar" cx="50" cy="50" r="45" [style.stroke-dashoffset]="283 - (skill.percentage * 283 / 100)" />
+            <text x="50%" y="50%" text-anchor="middle" class="progress-circle__text" transform="rotate(90 50 50)">{{skill.percentage}}%</text>
+        </svg>
+    </div>
+    <div class="col-12 text-center pb-3" *ngIf="!mostrarEditSkill && !mostrarAddSkill">
+        <button class="btn"  (click)="toggleMostrarAddSkill()">
+            <i class="bi bi-plus-square" style="font-size:24px;"></i>
+        </button>
+        <button class="btn" (click)="toggleMostrarEditSkill()">
+            <i class="bi bi-pencil-square" style="font-size:24px;"></i>
+        </button>
+        <button class="btn"(click)="onDeleteSkill(this.skill)" *ngIf="canDelete">
+            <i class="bi bi-trash" style="font-size:24px;"></i>
+        </button>
+    </div>
+    <div class="col-12 text-center pb-3">
+
+        <app-add-skill 
+            (onAddSkill)= "toggleMostrarAddSkill()"
+            *ngIf="mostrarAddSkill">
+        </app-add-skill>
+
+        <app-edit-skill 
+            (toggleEditSkillEventEmitter)= "toggleMostrarEditSkill()"
+            [skill]="skill"
+            *ngIf="mostrarEditSkill">
+        </app-edit-skill>
+    </div>
+</div>

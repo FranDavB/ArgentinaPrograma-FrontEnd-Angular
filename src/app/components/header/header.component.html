@@ -1,42 +1,3 @@
-<!-- <main>
-    <div>
-        <div class="dropdown show">
-            <a class="btn btn-secondary btn-nav" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <fa-icon [icon]="faBars"></fa-icon>
-            </a>
-        
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">Home</a>
-              <a class="dropdown-item" href="#">Experience</a>
-              <a class="dropdown-item" href="#">Formation</a>
-              <a class="dropdown-item" href="#">Projects</a>
-            </div>
-        </div>
-    </div>
-    <div>
-        <fa-icon  [icon]="faCanadianMapleLeaf" class="fa-2xl faCanadianMapleLeaf"></fa-icon>
-    </div>
-    <div>
-        <ul>
-            <li>
-                <a href="https://discordapp.com/users/133364525113147392" ><fa-icon [icon]="faDiscord" class="fa-xl"></fa-icon></a>
-            </li>
-            <li>
-                <a href="mailto:francodbaretta@gmail.com?asunto=Contacto%20portfolio" ><fa-icon [icon]="faGoogle" class="fa-xl"></fa-icon></a>
-            </li>
-            <li>
-                <a href="https://www.facebook.com/franco.baretta.5"><fa-icon  [icon]="faFacebook" class="fa-xl"></fa-icon></a>
-            </li>
-            <li>
-                <button 
-                    class="login"
-                    routerLink="/ingresar"><fa-icon  [icon]="faRightToBracket" class="fa-xl"></fa-icon>
-                </button>
-            </li>
-        </ul>
-    </div>
-</main> -->
-
 <nav class="navbar navbar-expand-sm bg-body-tertiary bg-light p-5">
   <div class="container-fluid border-bottom">
     <a class="navbar-brand">
@@ -48,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav text-center ms-auto">
         <li class="nav-item ">
-          <a class="nav-link a-link" (click)="navegar('#acerca-de')">Inicio</a>
+          <a class="nav-link a-link" (click)="navegar('#acerca-de')">Acerca de mí</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Experiencia</a>
@@ -58,6 +19,12 @@
         </li>
         <li class="nav-item">
           <a class="nav-link a-link" (click)="navegar('#proyectos')">Proyectos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link a-link" (click)="navegar('#skills')">Skills</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link a-link" (click)="navegar('#contacto')">Contacto</a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto text-center">

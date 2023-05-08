@@ -31,6 +31,10 @@ import { ProjectComponent } from './components/main/project/project.component';
 import { ElementProjectComponent } from './components/main/project/element-project/element-project.component';
 import { AddProjectComponent } from './components/main/project/add-project/add-project.component';
 import { EditProjectComponent } from './components/main/project/edit-project/edit-project.component';
+import { SkillComponent } from './components/main/skill/skill.component';
+import { ElementSkillComponent } from './components/main/skill/element-skill/element-skill.component';
+import { EditSkillComponent } from './components/main/skill/edit-skill/edit-skill.component';
+import { AddSkillComponent } from './components/main/skill/add-skill/add-skill.component';
 
 
 @NgModule({
@@ -54,6 +58,10 @@ import { EditProjectComponent } from './components/main/project/edit-project/edi
     ElementProjectComponent,
     AddProjectComponent,
     EditProjectComponent,
+    SkillComponent,
+    ElementSkillComponent,
+    EditSkillComponent,
+    AddSkillComponent,
     
   ],
   imports: [

@@ -1,0 +1,55 @@
+<div 
+  class="mb-3 mt-3 container text-center"
+  data-aos="fade-up">
+    <h3>Editar habilidad</h3>
+</div>
+<div 
+  class="container p-5 form"
+  data-aos="fade-up">
+    <form
+        (ngSubmit)="onEditSkill($event); toggleMostrarEditSkill()"
+        [formGroup]="editForm">
+        <div class="mb-3">
+            <label for="titleSkill" class="form-label">¿Qué habilidad quiere mostrar?</label>
+            <input
+                formControlName="title"  
+                type="text" 
+                class="form-control" 
+                id="titleSkill" 
+                aria-describedby="nameHelp"
+                placeholder="Ingrese una habilidad"
+                [ngClass]="{'is-invalid': Title?.errors && Title?.touched, 'is-valid': !Title?.errors && Title?.touched}">
+            <div *ngIf= "Title?.errors && Title?.touched">
+              <p *ngIf= "Title?.hasError('required')" class="text-danger">
+                Debe ingresar una habilidad.
+              </p>
+              <p *ngIf ="Title?.hasError('minlength')" class="text-danger">
+                Debe contener más de 3 caracteres.
+              </p>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="percentage" class="form-label">Porcentaje</label>
+            <input 
+                rows="5" cols="33"
+                formControlName="percentage"  
+                type="text" 
+                class="form-control" 
+                id="percentage" 
+                aria-describedby="professionHelp"
+                placeholder="Ingrese un número que represente su destreza en dicha habilidad"
+                [ngClass]="{'is-invalid': Percentage?.errors && Percentage?.touched, 'is-valid': !Percentage?.errors && Percentage?.touched}">
+            <div *ngIf= "Percentage?.errors && Percentage?.touched">
+                <p *ngIf= "Percentage?.hasError('required')" class="text-danger">
+                  El porcentaje es obligatorio
+                </p>
+                <p *ngIf ="Percentage?.errors?.['minlength'] || Percentage?.errors?.['pattern'] || Percentage?.errors?.['maxlength'] " class="text-danger">
+                  El porcentaje debe ser un número e ir del 1 al 100.
+                </p>
+            </div>
+        </div>
+        <div class="text-center" >
+            <button type="submit" class="btn btn-primary mt-4" [disabled]="!editForm.valid">Guardar cambios</button>
+        </div>
+    </form>
+</div>

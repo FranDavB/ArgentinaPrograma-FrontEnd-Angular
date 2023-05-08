@@ -1,0 +1,16 @@
+<div class="bgn">
+    <div class="container p-4 border-bottom">
+        <h2 class="text-center " id="skills">
+            Hard & Soft Skills
+        </h2>
+    </div>
+    <div class="container mt-4 p-5 cover">
+        <div class="row text-center row-cols-1 row-cols-md-2 g-4">
+            <app-element-skill
+            *ngFor="let skill of skills"
+                [skill]="skill"
+                [canDelete]="canDelete">
+            </app-element-skill>
+        </div>
+    </div>
+</div>
