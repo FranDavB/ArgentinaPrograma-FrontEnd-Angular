@@ -1,0 +1,48 @@
+<div 
+    class="container container mt-4 p-5 cover"     
+    *ngIf="!mostrarEditExperience && !mostrarAddExperience">
+
+    <div class="row mt-3">
+
+        <div class="col-lg-8 pt-5">
+            <p class="text-center">
+                {{experience.description}}
+            </p>
+            <p class="text-center">
+                {{experience.date}}
+            </p>
+        </div>
+        <div class="col-lg-4">
+            <img src="{{experience.logourl}}" alt="{{experience.id}}" class="img-fluid logo">
+        </div>
+
+        <div
+            class="col-12 text-center">
+            <button class="btn" (click)="toggleMostrarAddExperience()" *ngIf="isLoggedIn$">
+                <i class="bi bi-plus-square" style="font-size:24px;"></i>
+            </button>
+            <button class="btn"(click)="toggleMostrarEditExperience()" *ngIf="isLoggedIn$">
+                <i class="bi bi-pencil-square" style="font-size:24px;"></i>
+            </button>
+            <button class="btn"(click)="onDeleteExperience(this.experience)" *ngIf="isLoggedIn$">
+                <i class="bi bi-trash" style="font-size:24px;"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div>
+
+    <div class="container mt-4 element" data-aos="fade-up" *ngIf="mostrarAddExperience">
+        <app-add-experience 
+            (onAddExperience)= "toggleMostrarAddExperience()">
+        </app-add-experience>
+    </div >
+    <div class="container mt-4 element" data-aos="fade-up" *ngIf="mostrarEditExperience">
+        <app-edit-experience 
+            (toggleEditExperienceEventEmitter)= "toggleMostrarEditExperience()"
+            [experience]="experience">
+        </app-edit-experience>
+    </div >
+
+
+

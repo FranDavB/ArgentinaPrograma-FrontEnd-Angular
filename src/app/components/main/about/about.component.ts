@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
+import { Subscription } from 'rxjs';
 import { ABOUT } from 'src/app/interfaces/ABOUT';
 import { About } from 'src/app/interfaces/interfaces';
-import { CommunicatorService } from 'src/app/services/experiences/communicator-experience.service';
-import { DatabaseService } from 'src/app/services/experiences/database.service';
+import { CommunicatorAboutService } from 'src/app/services/about/communicator-about.service';
+import { DatabaseAboutService } from 'src/app/services/about/database-about.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-about',
@@ -14,8 +16,17 @@ export class AboutComponent implements OnInit{
 
   mostrarEditAbout: boolean = false;
   about: About = ABOUT[0];
+  isLoggedIn$: boolean = false;
+  isLoggedInSubscription?: Subscription;
   
   ngOnInit(): void {
+
+    this.isLoggedInSubscription = this.authServ.isLoggedIn$.subscribe(
+      (isLoggedIn: boolean) => {
+        this.isLoggedIn$ = isLoggedIn;
+      }
+    );
+    
     AOS.init({
       duration: 1000,
       offset: 200
@@ -25,8 +36,9 @@ export class AboutComponent implements OnInit{
   }
 
   constructor(
-    private communicator: CommunicatorService,
-    private database: DatabaseService
+    private authServ: AuthenticationService,
+    private communicator: CommunicatorAboutService,
+    private database: DatabaseAboutService
   ){
     this.communicatorEditExperience();
   }

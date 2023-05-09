@@ -4,6 +4,7 @@ import * as AOS from 'aos';
 import { Subscription } from 'rxjs';
 import { FORMATION } from 'src/app/interfaces/FORMATION';
 import { Formation } from 'src/app/interfaces/interfaces';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CommunicatorFormationService } from 'src/app/services/formation/communicator-formation.service';
 import { DatabaseFormationService } from 'src/app/services/formation/database-formation.service';
 
@@ -16,6 +17,13 @@ import { DatabaseFormationService } from 'src/app/services/formation/database-fo
 export class ElementFormationComponent implements OnInit{
 
   ngOnInit(): void {
+
+    this.isLoggedInSubscription = this.authServ.isLoggedIn$.subscribe(
+      (isLoggedIn: boolean) => {
+        this.isLoggedIn$ = isLoggedIn;
+      }
+    );
+
     AOS.init({
       duration: 1000,
       offset: 200
@@ -23,17 +31,14 @@ export class ElementFormationComponent implements OnInit{
   }
 
   constructor(
-    private database: DatabaseFormationService, 
-    private route: ActivatedRoute, 
+    private authServ: AuthenticationService,
     private communicator: CommunicatorFormationService
   ){}
 
   @Input() formation: Formation = FORMATION[0];
-  @Input() formations: Formation[] = [];
   @Input() canDelete: boolean = false;
-
-
-  subscription?: Subscription;
+  isLoggedIn$: boolean = false;
+  isLoggedInSubscription?: Subscription;
   mostrarEditFormation: boolean = false;
   mostrarAddFormation: boolean = false;
 

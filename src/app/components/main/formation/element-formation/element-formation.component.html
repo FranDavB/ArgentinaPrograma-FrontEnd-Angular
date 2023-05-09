@@ -26,13 +26,13 @@
         </div>
         <div class="row">
             <div class="col-12 text-center">
-                <button class="btn" (click)="toggleMostrarAddFormation()" >
+                <button class="btn" (click)="toggleMostrarAddFormation()" *ngIf="isLoggedIn$">
                     <i class="bi bi-plus-square" style="font-size:24px;"></i>
                 </button>
-                <button class="btn" (click)="toggleMostrarEditFormation()">
+                <button class="btn" (click)="toggleMostrarEditFormation()" *ngIf="isLoggedIn$">
                     <i class="bi bi-pencil-square" style="font-size:24px;"></i>
                 </button>
-                <button class="btn" (click)="onDeleteFormation(this.formation)" *ngIf="canDelete">
+                <button class="btn" (click)="onDeleteFormation(this.formation)" *ngIf="canDelete && isLoggedIn$">
                     <i class="bi bi-trash" style="font-size:24px;"></i>
                 </button>
             </div>

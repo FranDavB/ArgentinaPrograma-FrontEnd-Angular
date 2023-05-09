@@ -1,41 +1,20 @@
 {
-  "experiences": [
+  "experience": [
     {
       "id": 1,
       "name": "Amada Crianza",
       "logourl": "/assets/Img/amadacrianzalogo.png",
       "description": "Amada Crianza es una empresa con el objetivo de vestir a tus hijos desde su nacimiento hasta su adolescencia! Desde mayo de 2023 me desempeño como desarrollador de su nueva página web, basada en Angular, Java y MySQL.",
       "date": "Mayo 2023 - Actualidad"
-    },
-    {
-      "id": 2,
-      "name": "Empresa2",
-      "logourl": "/assets/Img/amadacrianzalogo.png",
-      "description": "Esto es un texto de prueba, su unica funcion es probar la funcionaliad! Desde mayo de 2023 me desempeño como desarrollador de su nueva página web, basada en Angular, Java y MySQL.",
-      "date": "Mayo 2023 - Actualidad"
-    },
-    {
-      "name": "Empresa3",
-      "logourl": "https://d22fxaf9t8d39k.cloudfront.net/2dafdf83c06414144f86b30f531a4494d559a594e0cb6d54b8ebef59f7118dfd16986.png",
-      "description": "Esto es un nuevo texto de prueba. No se debe tener en cuenta3",
-      "date": "Enero 2023 - Febrero 2023",
-      "id": 3
-    },
-    {
-      "name": "Empresa4",
-      "logourl": "https://d22fxaf9t8d39k.cloudfront.net/2dafdf83c06414144f86b30f531a4494d559a594e0cb6d54b8ebef59f7118dfd16986.png",
-      "description": "Esto es un nuevo texto de prueba. No se debe tener en cuenta. AGUANTE EL PACO VIEJA",
-      "date": "Enero 2023 - Febrero 2023",
-      "id": 4
     }
   ],
   "about": [
     {
       "id": 1,
-      "photoURL": "https://img.a.transfermarkt.technology/portrait/big/8198-1673305564.jpg?lm=1",
-      "name": "Cristiano Ronaldo",
-      "profession": "Futbolista, Empresario",
-      "description": "Soy un aficionado a la programación y actualmente me encuentro cursando la diplomatura en desarrollo web de Argentina Programa. Por otro lado, soy estudiante de Biología en la Universidad Nacional de Córdoba, en donde me especializo en el comportamiento animal. En mis ratos libres programo aplicaciones web y ahondo en temáticas de las neurociencias e historia.",
+      "photoURL": "./assets/Img/Foto.jpg",
+      "name": "Franco David Baretta",
+      "profession": "Junior Web Developer y Biólogo",
+      "description": "Soy un aficionado a la programación y actualmente me encuentro cursando la diplomatura en desarrollo web de Argentina Programa. Por otro lado, soy estudiante de Biología en la Universidad Nacional de Córdoba, en donde me especializo en el comportamiento animal. En mis ratos libres programo aplicaciones web y ahondo en temáticas de las neurociencias e historia.\n\n",
       "city": "Córdoba",
       "country": "Argentina"
     }
@@ -70,18 +49,38 @@
   "skill": [
     {
       "id": 1,
-      "title": "Prueba 100",
-      "percentage": "1"
+      "title": "HTML5",
+      "percentage": "75"
     },
     {
       "id": 3,
-      "title": "Prueba 3",
-      "percentage": 25
+      "title": "CSS",
+      "percentage": "60"
     },
     {
       "id": 4,
-      "title": "Prueba 80",
-      "percentage": "80"
+      "title": "Angular",
+      "percentage": "75"
+    },
+    {
+      "id": 5,
+      "title": "Bootstrap",
+      "percentage": "70"
+    },
+    {
+      "id": 6,
+      "title": "MySQL",
+      "percentage": "70"
+    },
+    {
+      "id": 7,
+      "title": "Java",
+      "percentage": "65"
+    },
+    {
+      "id": 8,
+      "title": "Typescript",
+      "percentage": "65"
     }
   ]
 }

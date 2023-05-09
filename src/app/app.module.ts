@@ -12,7 +12,6 @@ import { ExperienceComponent } from './components/main/experience/experience.com
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { DatabaseService } from './services/experiences/database.service';
-import { ElementexpComponent } from './components/main/experience/elementexp/elementexp.component';
 import { LoginComponent } from './components/header/login/login.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,6 +34,7 @@ import { SkillComponent } from './components/main/skill/skill.component';
 import { ElementSkillComponent } from './components/main/skill/element-skill/element-skill.component';
 import { EditSkillComponent } from './components/main/skill/edit-skill/edit-skill.component';
 import { AddSkillComponent } from './components/main/skill/add-skill/add-skill.component';
+import { ElementExperienceComponent } from './components/main/experience/element-experience/element-experience.component';
 
 
 @NgModule({
@@ -44,7 +44,6 @@ import { AddSkillComponent } from './components/main/skill/add-skill/add-skill.c
     MainComponent,
     AboutComponent,
     ExperienceComponent,
-    ElementexpComponent,
     LoginComponent,
     AddExperienceComponent,
     EditExperienceComponent,
@@ -62,6 +61,7 @@ import { AddSkillComponent } from './components/main/skill/add-skill/add-skill.c
     ElementSkillComponent,
     EditSkillComponent,
     AddSkillComponent,
+    ElementExperienceComponent,
     
   ],
   imports: [

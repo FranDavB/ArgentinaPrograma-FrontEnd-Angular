@@ -4,6 +4,7 @@ import * as AOS from 'aos';
 import { Subscription } from 'rxjs';
 import { PROJECT } from 'src/app/interfaces/PROJECT';
 import { Project } from 'src/app/interfaces/interfaces';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CommunicatorProjectService } from 'src/app/services/project/communicator-project.service';
 import { DatabaseProjectService } from 'src/app/services/project/database-project.service';
 
@@ -15,7 +16,14 @@ import { DatabaseProjectService } from 'src/app/services/project/database-projec
 })
 export class ElementProjectComponent implements OnInit{
 
-  ngOnInit(): void {    
+  ngOnInit(): void {   
+    
+    this.isLoggedInSubscription = this.authServ.isLoggedIn$.subscribe(
+      (isLoggedIn: boolean) => {
+        this.isLoggedIn$ = isLoggedIn;
+      }
+    );
+    
     AOS.init({
       duration: 1000,
       offset: 200
@@ -23,15 +31,15 @@ export class ElementProjectComponent implements OnInit{
   }
 
   constructor(
-    private database: DatabaseProjectService, 
-    private route: ActivatedRoute, 
+    private authServ: AuthenticationService,
     private communicator: CommunicatorProjectService
   ){}
   
 
   @Input() project: Project = PROJECT[0];
   @Input() canDelete: boolean = false;
-  subscription?: Subscription;
+  isLoggedIn$: boolean = false;
+  isLoggedInSubscription?: Subscription;
   mostrarEditProject: boolean = false;
   mostrarAddProject: boolean = false;
 

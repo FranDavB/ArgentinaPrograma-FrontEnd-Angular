@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CommunicatorService } from 'src/app/services/experiences/communicator-experience.service';
+import { CommunicatorAboutService } from 'src/app/services/about/communicator-about.service';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class EditAboutComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private communicator: CommunicatorService){
+    private communicator: CommunicatorAboutService){
 
       this.editForm = this.formBuilder.group(
         {

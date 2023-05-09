@@ -24,7 +24,8 @@
                     Actualmente vivo en {{about.city}}, {{about.country}}.
                 </p>
                 <div class="text-center">
-                    <button 
+                    <button
+                        *ngIf="isLoggedIn$" 
                         class="btn"
                         (click)="toggleEditAbout()">
                             <i class="bi bi-pencil-square" style="font-size:24px;"></i>

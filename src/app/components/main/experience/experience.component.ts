@@ -1,12 +1,9 @@
-import { Component, OnInit, ChangeDetectorRef  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import * as AOS from 'aos';
 import { Experiences } from 'src/app/interfaces/interfaces';
-import { Subscription } from 'rxjs';
-import { Router, ActivatedRoute } from '@angular/router';
-import { faSquarePlus, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
-
-import { DatabaseService } from 'src/app/services/experiences/database.service';
 import { CommunicatorService } from 'src/app/services/experiences/communicator-experience.service';
-
+import { DatabaseService } from 'src/app/services/experiences/database.service';
 
 @Component({
   selector: 'app-experience',
@@ -15,99 +12,74 @@ import { CommunicatorService } from 'src/app/services/experiences/communicator-e
 })
 export class ExperienceComponent implements OnInit {
 
-  
-  active: boolean = false;
-  subscription?: Subscription;
-  experiences: Experiences[] = [];
-  faSquarePlus = faSquarePlus;
-  faPenToSquare = faPenToSquare;
-  faTrash = faTrash;
-  id?: number;
-  idExpDelete: number = 1;
-
-  experience?: Experiences;
-
-  constructor(
-      private database: DatabaseService,
-      private communicator: CommunicatorService,
-      private router: Router,
-      private route: ActivatedRoute,
-      private cdr: ChangeDetectorRef){
-        
-      this.communicatorDeleteExperience();
-
-      this.communicatorEditExperience();
-
-      this.communicatorAddExperience();
-      
-      }
-
   ngOnInit(): void {
 
-    this.getExperience();
+    this.database.getExperience().subscribe((dbexperiences) => {
+      this.experiences = dbexperiences;
+    });
 
-  }
+    this.communicator.onAddExperienceObservable().subscribe((newExp)=>{
+      this.addExperience(newExp);
+    })
 
-  // CommunicatorService //
-
-  communicatorDeleteExperience(){
     this.communicator.onDeleteExperienceObservable().subscribe((deleteExp)=>{
       this.deleteExperience(deleteExp);
     });
-  }
 
-  communicatorEditExperience(){
     this.communicator.onEditExperienceObservable().subscribe((editExperience)=>{
-      this.editExperience(editExperience)
-  })
+      this.editExperience(editExperience);
+    });
+    
+    AOS.init({
+      duration: 1000,
+      offset: 200
+    });
+
   }
+  
+  constructor(
+    public router: Router,
+    private database: DatabaseService,
+    private communicator: CommunicatorService
+  ){}
 
-  communicatorAddExperience(){
-    this.communicator.onAddExperienceObservable().subscribe((newExp)=>{
-      this.addExperience(newExp);
-  })
-  }
+  experiences: Experiences[] = []
+  experienceSelected: boolean = false;
 
-  // Router //
-
-  onSelect(experience: any){
-    this.router.navigate(['/portfolio/experiencia', experience.id])
-  }
-
-  // Database //
-
-  getExperience(){
+  getExperiences(){
     this.database.getExperience().subscribe((dbexperiences) => {
       this.experiences = dbexperiences;
-      console.log(this.experiences);
     });
   }
 
-  addExperience(experiencia: Experiences){
-
-    this.database.addExperience(experiencia).subscribe((experience) =>
-      this.experiences.push(experience),
-    )
-
-    const indx = this.experiences.find(element => element.id == experiencia.id);
-    this.router.navigate(["/portfolio"]);
-
+  addExperience(experience: Experiences){
+    this.database.addExperience(experience).subscribe((newExperience) =>
+      this.experiences.push(newExperience))
   }
 
   deleteExperience(experience: Experiences){
-
     this.database.deleteExperience(experience).subscribe(() =>{
       this.experiences = this.experiences.filter (t => t.id !== experience.id);
     })
-
-    this.router.navigate(["/portfolio"]);
   }
 
   editExperience(experience: Experiences){
-    this.database.editExperience(experience).subscribe( expEdited => {
-      this.experience = expEdited; 
-      this.router.navigate(["/portfolio", expEdited.id]);
-    })
+    this.database.editExperience(experience).subscribe(() => {
+      const index = this.experiences.findIndex(f => f.id === experience.id);
+      if (index !== -1) {
+        this.experiences[index] = experience;
+      } else {
+        this.experiences.push(experience);
+      }
+    });
   }
 
+  toggleExperienceSelected(){
+    this.experienceSelected = true;
+  }
+
+
+  get canDelete(): boolean{
+    return this.experiences.length >= 2;
+  }
 }
