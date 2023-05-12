@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FORMATION } from 'src/app/interfaces/FORMATION';
@@ -11,7 +11,7 @@ import { CommunicatorFormationService } from 'src/app/services/formation/communi
   templateUrl: './edit-formation.component.html',
   styleUrls: ['./edit-formation.component.css']
 })
-export class EditFormationComponent {
+export class EditFormationComponent implements OnInit {
   editForm: FormGroup;
   @Input() formation: Formation = FORMATION[0];
   @Output() toggleEditFormationEventEmitter: EventEmitter<Formation> = new EventEmitter();
@@ -24,13 +24,17 @@ export class EditFormationComponent {
       this.editForm = this.formBuilder.group(
         {
           id: [''],
-          title: ['', [Validators.required, Validators.minLength(3)]],
-          description: ['', [Validators.required, Validators.minLength(100), Validators.maxLength(600)]],
-          logoAcademy: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(1000)]],
-          startDate: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
-          endDate: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4),]],
+          title: ['', [Validators.required]],
+          description: ['', [Validators.required, Validators.maxLength(500)]],
+          logoAcademy: ['', [Validators.required, Validators.maxLength(1000)]],
+          startDate: ['', [Validators.required, Validators.pattern(/([A-Za-z]+\s[0-9]+)|(Actualidad)/)]],
+          endDate: ['', [Validators.required, Validators.pattern(/([A-Za-z]+\s[0-9]+)|(Actualidad)/)]],
         }
       )
+  }
+
+  ngOnInit(): void {
+    this.editForm.patchValue(this.formation);
   }
 
   onEditFormation(event: Event){
@@ -44,7 +48,6 @@ export class EditFormationComponent {
 
   toggleMostrarEditFormation(){
     this.toggleEditFormationEventEmitter.emit();
-    console.log('toggleMostrarEditFormation en  editformation funciona correctamente')
   }
 
   get Title(){

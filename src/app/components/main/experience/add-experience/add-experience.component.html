@@ -1,8 +1,10 @@
-<div class="mb-3">
+<div class="mb-3 text-center">
     <h3>Agregar experiencia</h3>
 </div>
 <form 
-        (ngSubmit)="addExperience($event)"
+        class="mx-auto"
+        style="max-width: 500px;"
+        (ngSubmit)="addExperience($event); toggleAddExperience()"  
         [formGroup]="addForm">
 
         <div class="form-group mb-3">
@@ -31,14 +33,14 @@
               type="text" 
               class="form-control" 
               id="logourl" 
-              placeholder="Password"
+              placeholder="Ingrese el URL del logo de la empresa"
               [ngClass]="{'is-invalid': Logourl?.errors && Logourl?.touched, 'is-valid': !Logourl?.errors && Logourl?.touched}">
               <div *ngIf= "Logourl?.errors && Logourl?.touched">
                 <p *ngIf= "Logourl?.hasError('required')" class="text-danger">
                   La dirección URL es requerida.
                 </p>
                 <p *ngIf ="Logourl?.errors?.['minlength'] || Description?.errors?.['maxlength']" class="text-danger">
-                  La dirección URL debe tener entre 4 y 1000 caracteres.
+                  La dirección URL debe tener hasta 1000 caracteres.
                 </p>
               </div>
           </div>
@@ -58,30 +60,51 @@
                 <p *ngIf= "Description?.hasError('required')" class="text-danger">
                   La descripción es requerida.
                 </p>
-                <p *ngIf ="Description?.errors?.['minlength'] || Description?.errors?.['maxlength'] " class="text-danger">
-                  La descripción debe tener entre 10 y 1000 caracteres.
+                <p *ngIf ="Description?.errors?.['maxlength'] " class="text-danger">
+                  La descripción debe tener hasta 500 caracteres.
                 </p>
               </div>
           </div>
           <div class="form-group mb-3">
-            <label for="date">Período de su trabajo en la empresa</label>
+            <label for="startDate">Fecha de inicio de contrato</label>
             <input 
-              formControlName="date"
+              formControlName="startDate"
               type="text" 
               class="form-control" 
-              id="date" 
-              placeholder="Ingrese el período de tiempo que trabajó en esta empresa"
-              [ngClass]="{'is-invalid': Date?.errors && Date?.touched, 'is-valid': !Date?.errors && Date?.touched}">
-              <div *ngIf= "Date?.errors && Date?.touched">
-                <p *ngIf= "Date?.hasError('required')" class="text-danger">
-                  El período es requerido.
+              id="startDate" 
+              placeholder="Ingrese la fecha en que comenzó a trabajar en dicha empresa"
+              [ngClass]="{'is-invalid': StartDate?.errors && StartDate?.touched, 'is-valid': !StartDate?.errors && StartDate?.touched}">
+              <div *ngIf= "StartDate?.errors && StartDate?.touched">
+                <p *ngIf= "StartDate?.hasError('required')" class="text-danger">
+                  La fecha es requerida.
                 </p>
-                <p *ngIf ="Date?.errors?.['pattern']" class="text-danger">
-                  Debe ingresar un período en formato Mes año - Mes año o Mes año - Actualidad
+                <p *ngIf ="StartDate?.errors?.['pattern']" class="text-danger">
+                  Debe ingresar un texto en formato "Mes Año" o "Actualidad"
                 </p>
               </div>
           </div>
-          <button type="submit" class="btn btn-primary mb-3">Agregar experiencia</button>
+          <div class="form-group mb-3">
+            <label for="endDate">Fecha de finalización de contrato</label>
+            <input 
+              formControlName="endDate"
+              type="text" 
+              class="form-control" 
+              id="endDate" 
+              placeholder="Ingrese la fecha en que finalizó su contrato con la empresa"
+              [ngClass]="{'is-invalid': EndDate?.errors && EndDate?.touched, 'is-valid': !EndDate?.errors && EndDate?.touched}">
+              <div *ngIf= "EndDate?.errors && EndDate?.touched">
+                <p *ngIf= "EndDate?.hasError('required')" class="text-danger">
+                  La fecha es requerida.
+                </p>
+                <p *ngIf ="EndDate?.errors?.['pattern']" class="text-danger">
+                  Debe ingresar un texto en formato "Mes Año" o "Actualidad"
+                </p>
+              </div>
+          </div>
+          <div class="text-center  mt-4">
+            <button class="btn btn-dark mx-3" (click)="toggleAddExperience()">Volver</button>
+            <button type="submit" class="btn btn-dark" [disabled]="!addForm.valid">Agregar experiencia</button>
+          </div>
 
 </form>
 

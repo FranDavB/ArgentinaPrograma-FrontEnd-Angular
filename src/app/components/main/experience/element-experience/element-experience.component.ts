@@ -42,7 +42,6 @@ export class ElementExperienceComponent implements OnInit{
 
 
   mostrarEditExperience: boolean = false;
-  mostrarAddExperience: boolean = false;
   isLoggedIn$: boolean = false;
   isLoggedInSubscription?: Subscription;
   
@@ -55,8 +54,5 @@ export class ElementExperienceComponent implements OnInit{
     this.mostrarEditExperience = !this.mostrarEditExperience;
   }
 
-  toggleMostrarAddExperience(){
-    this.mostrarAddExperience = !this.mostrarAddExperience
-  }
 
 }

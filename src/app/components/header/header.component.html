@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-sm bg-body-tertiary bg-light p-5">
+<nav class="navbar navbar-expand-sm bg-body-tertiary bg-light pt-5 pb-3 px-5">
   <div class="container-fluid border-bottom">
     <a class="navbar-brand">
-      <img src="./assets/Img/B.png" width="50" height="50" class="d-inline-block align-top" alt="">
+      <img src="https://campusvirtual.ing.unlpam.edu.ar/pluginfile.php/37478/coursecat/description/FONDO%20JPG-%20sin%20espacios.png" class="d-inline-block align-top icon" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -12,10 +12,10 @@
           <a class="nav-link a-link" (click)="navegar('#acerca-de')">Acerca de mí</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link a-link" (click)="navegar('#experiencia')">Experiencia</a>
+          <a class="nav-link a-link" (click)="navegar('#formacion-academica')">Formación</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link a-link" (click)="navegar('#formacion-academica')">Formación</a>
+          <a class="nav-link a-link" (click)="navegar('#experiencia')">Experiencia</a>
         </li>
         <li class="nav-item">
           <a class="nav-link a-link" (click)="navegar('#proyectos')">Proyectos</a>
@@ -29,25 +29,16 @@
       </ul>
       <ul class="navbar-nav ms-auto text-center">
         <li class="nav-item">
-            <a class="nav-link a-link" [routerLink]="['/ingresar']" data-bs-target="#myModal" data-bs-toggle="modal">
-              <i class="bi bi-person-fill fa-lg" style="font-size:36px;"></i>
+            <a class="nav-link a-link" [routerLink]="['/ingresar']" data-bs-target="#myModal" data-bs-toggle="modal" *ngIf="!isLoggedIn$">
+              Ingresar
             </a>
+            <button class="btn" *ngIf="isLoggedIn$" (click)="logOut()">
+              Cerrar sesión
+            </button>
         </li>
     </ul>
     </div>
   </div>
 </nav>
 
-  <div class="jumbotron jumbotron-fluid cover" data-aos="fade-up">
-    <div class="container p-5 vh-50 full-view ">
-
-    <div class="container text-center">
-      <h1 class="display-4 pb-4 font-weight-bold">¡Bienvenido!</h1>
-      <p class="lead pb-4">Éste es mi portfolio web. Aquí verás un resumen de mí y las maneras para contactarme.</p>
-      <button class="btn btn-dark" (click)="navegar('#acerca-de')">
-        ¡Conóceme!
-      </button>
-    </div>
-  </div>
-</div>
 

@@ -1,16 +1,27 @@
-<div class="bgn">
-    <div class="container p-4 border-bottom">
+<div class="bgn" data-aos="fade-right">
+    <div class="container p-3 border-bottom">
         <h2 class="text-center " id="skills">
             Hard & Soft Skills
         </h2>
     </div>
-    <div class="container mt-4 p-5 cover">
-        <div class="row text-center row-cols-1 row-cols-md-4">
+    <div class="container mt-4 p-3 cover" data-aos="fade-right">
+
+        <div class="row text-center row-cols-1 row-cols-md-4" *ngIf="!mostrarAddSkill">
             <app-element-skill
             *ngFor="let skill of skills"
                 [skill]="skill"
                 [canDelete]="canDelete">
             </app-element-skill>
+        </div>
+        <div class="col-12 text-center pb-3" *ngIf="mostrarAddSkill">
+            <app-add-skill 
+                (onAddSkill)= "toggleMostrarAddSkill()">
+            </app-add-skill>
+        </div>
+        <div class="col-12 text-center pb-3" *ngIf="!mostrarAddSkill">
+            <button class="btn"  (click)="toggleMostrarAddSkill()" *ngIf="isLoggedIn$">
+                <i class="bi bi-plus-square" style="font-size:24px;"></i>
+            </button>
         </div>
     </div>
 </div>

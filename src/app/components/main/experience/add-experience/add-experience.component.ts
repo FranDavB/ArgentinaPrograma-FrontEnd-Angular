@@ -15,7 +15,7 @@ export class AddExperienceComponent {
   addForm: FormGroup;
 
 
-  @Output() onaddExperience: EventEmitter<Experiences> = new EventEmitter();
+  @Output() onAddExperience: EventEmitter<Experiences> = new EventEmitter();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,10 +24,12 @@ export class AddExperienceComponent {
 
       this.addForm = this.formBuilder.group(
         {
-          name: ['', [Validators.required, Validators.minLength(3)]],
+          name: ['', [Validators.required]],
           logourl: ['', [Validators.required, Validators.maxLength(1000)]],
-          description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(1000)]],
-          date: ['', [Validators.required, Validators.pattern(/[A-Za-z]+\s[0-9]+\s-\s([A-Za-z]+\s[0-9]|[[A-Za-z])/)]]
+          description: ['', [Validators.required, Validators.maxLength(500)]],
+          startDate: ['', [Validators.required, Validators.pattern(/([A-Za-z]+\s[0-9]+)|(Actualidad)/)]],
+          endDate: ['', [Validators.required, Validators.pattern(/([A-Za-z]+\s[0-9]+)|(Actualidad)/)]]
+
         }
       )
 
@@ -40,8 +42,8 @@ export class AddExperienceComponent {
     this.communicator.onAddExperience(newExperience);
   }
 
-  toggleEditExp(){
-    this.onaddExperience.emit();
+  toggleAddExperience(){
+    this.onAddExperience.emit();
   }
 
   get Name(){
@@ -56,8 +58,12 @@ export class AddExperienceComponent {
     return this.addForm.get("description");
   }
 
-  get Date(){
-    return this.addForm.get("date");
+  get StartDate(){
+    return this.addForm.get("startDate");
+  }
+
+  get EndDate(){
+    return this.addForm.get("endDate");
   }
 
 

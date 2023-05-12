@@ -21,11 +21,11 @@ export class AddFormationComponent {
 
       this.addForm = this.formBuilder.group(
         {
-          title: ['', [Validators.required, Validators.minLength(3)]],
-          description: ['', [Validators.required, Validators.minLength(100), Validators.maxLength(600)]],
-          logoAcademy: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(1000)]],
-          startDate: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
-          endDate: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
+          title: ['', [Validators.required]],
+          description: ['', [Validators.required, Validators.maxLength(500)]],
+          logoAcademy: ['', [Validators.required, Validators.maxLength(1000)]],
+          startDate: ['', [Validators.required, Validators.pattern(/([A-Za-z]+\s[0-9]+)|(Actualidad)/)]],
+          endDate: ['', [Validators.required, Validators.pattern(/([A-Za-z]+\s[0-9]+)|(Actualidad)/)]],
         }
       )
     }

@@ -1,19 +1,18 @@
 
-<div class="container p-4 border-bottom">
-    <h2 #tituloAbout class="text-center " id="acerca-de">
+<!--<div class="container p-4 border-bottom">
+    <h2 #tituloAbout class="text-center " >
         Acerca de mí
     </h2>
-</div>
+</div>-->
 <div 
-    class="jumbotron jumbotron-fluid m-5 cover" 
-    data-aos="fade-up"
+    class="jumbotron jumbotron-fluid pt-5 mb-5 cover" id="acerca-de"
     *ngIf="!mostrarEditAbout">
-    <div class="container p-2">
+    <div class="container p-4" data-aos="fade-right">
         <div class="row">
-            <div class="col-lg-4">
-                <img src="{{about.photoURL}}" class="photo rounded d-block mx-auto img-fluid" alt="photo">
+            <div class="col-lg-6">
+                <img src="{{about.photourl}}" class="photo rounded d-block mx-auto img-fluid" alt="photo">
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-6">
                 <h5 class="mt-2 mb-4">
                     {{about.name}}, {{about.profession}}
                 </h5>
@@ -36,9 +35,9 @@
     </div>
 </div>
 
-<div container p-5>
+<div container p-5  *ngIf="mostrarEditAbout">
     <app-edit-about
-        *ngIf="mostrarEditAbout"
+        [about]="about"
         (toggleEditAboutEventEmitter)="toggleEditAbout()">
     </app-edit-about>
 </div>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as AOS from 'aos';
+import { Subscription } from 'rxjs';
 import { Project } from 'src/app/interfaces/interfaces';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CommunicatorProjectService } from 'src/app/services/project/communicator-project.service';
 import { DatabaseProjectService } from 'src/app/services/project/database-project.service';
 
@@ -14,6 +16,12 @@ export class ProjectComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.isLoggedInSubscription = this.authServ.isLoggedIn$.subscribe(
+      (isLoggedIn: boolean) => {
+        this.isLoggedIn$ = isLoggedIn;
+      }
+    );
+
     this.database.getProject().subscribe((dbprojects) => {
       this.projects = dbprojects;
     });
@@ -24,10 +32,13 @@ export class ProjectComponent implements OnInit {
 
     this.communicator.onDeleteProjecteObservable().subscribe((deleteProj)=>{
       this.deleteProject(deleteProj);
+      this.projectSelected = false;
     });
 
     this.communicator.onEditProjectObservable().subscribe((editProject)=>{
       this.editProject(editProject);
+      this.projectSelected = false;
+
     });
     
     AOS.init({
@@ -37,6 +48,7 @@ export class ProjectComponent implements OnInit {
   }
 
   constructor(
+    private authServ: AuthenticationService,
     public router: Router,
     private database: DatabaseProjectService,
     private communicator: CommunicatorProjectService
@@ -45,6 +57,9 @@ export class ProjectComponent implements OnInit {
 
   projects: Project[] = []
   projectSelected: boolean = false;
+  mostrarAddProject: boolean = false;
+  isLoggedIn$: boolean = false;
+  isLoggedInSubscription?: Subscription;
 
   getProjects(){
     this.database.getProject().subscribe((dbprojects) => {
@@ -77,6 +92,11 @@ export class ProjectComponent implements OnInit {
 
   toggleProjectSelected(){
     this.projectSelected = true;
+  }
+
+  toggleMostrarAddProject(){
+    this.mostrarAddProject = !this.mostrarAddProject;
+    console.log('MostrarAddProjet = ' + this.mostrarAddProject);
   }
 
   get canDelete(): boolean{

@@ -40,7 +40,7 @@ export class ElementFormationComponent implements OnInit{
   isLoggedIn$: boolean = false;
   isLoggedInSubscription?: Subscription;
   mostrarEditFormation: boolean = false;
-  mostrarAddFormation: boolean = false;
+  
 
   onDeleteFormation(formation: Formation){
     this.communicator.onDeleteFormation(formation);
@@ -50,8 +50,6 @@ export class ElementFormationComponent implements OnInit{
     this.mostrarEditFormation = !this.mostrarEditFormation;
   }
 
-  toggleMostrarAddFormation(){
-    this.mostrarAddFormation = !this.mostrarAddFormation
-  }
+
 
 }

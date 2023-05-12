@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as AOS from 'aos';
+import { Subscription } from 'rxjs';
 import { Experiences } from 'src/app/interfaces/interfaces';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CommunicatorService } from 'src/app/services/experiences/communicator-experience.service';
 import { DatabaseService } from 'src/app/services/experiences/database.service';
 
@@ -14,6 +16,12 @@ export class ExperienceComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.isLoggedInSubscription = this.authServ.isLoggedIn$.subscribe(
+      (isLoggedIn: boolean) => {
+        this.isLoggedIn$ = isLoggedIn;
+      }
+    );
+
     this.database.getExperience().subscribe((dbexperiences) => {
       this.experiences = dbexperiences;
     });
@@ -24,10 +32,12 @@ export class ExperienceComponent implements OnInit {
 
     this.communicator.onDeleteExperienceObservable().subscribe((deleteExp)=>{
       this.deleteExperience(deleteExp);
+      this.experienceSelected = false;
     });
 
     this.communicator.onEditExperienceObservable().subscribe((editExperience)=>{
       this.editExperience(editExperience);
+      this.experienceSelected = false;
     });
     
     AOS.init({
@@ -38,6 +48,7 @@ export class ExperienceComponent implements OnInit {
   }
   
   constructor(
+    private authServ: AuthenticationService,
     public router: Router,
     private database: DatabaseService,
     private communicator: CommunicatorService
@@ -45,6 +56,11 @@ export class ExperienceComponent implements OnInit {
 
   experiences: Experiences[] = []
   experienceSelected: boolean = false;
+  isLoggedIn$: boolean = false;
+  isLoggedInSubscription?: Subscription;
+  mostrarAddExperience: boolean = false;
+
+
 
   getExperiences(){
     this.database.getExperience().subscribe((dbexperiences) => {
@@ -76,6 +92,11 @@ export class ExperienceComponent implements OnInit {
 
   toggleExperienceSelected(){
     this.experienceSelected = true;
+  }
+
+  
+  toggleMostrarAddExperience(){
+    this.mostrarAddExperience = !this.mostrarAddExperience
   }
 
 

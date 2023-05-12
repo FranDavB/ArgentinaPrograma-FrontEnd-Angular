@@ -1,12 +1,13 @@
-<div class="container p-4 border-bottom">
+<div class="container p-3 border-bottom" data-aos="fade-right">
     <h2 class="text-center " id="experiencia">
         Experiencias laborales
     </h2>
 </div>
 <div
-    class="container mt-4 p-5 cover"
+    class="container mt-4 p-2 cover"
+    data-aos="fade-right"
     >
-    <nav class="nav nav-pills justify-content-center flex-column flex-lg-row text-center" data-aos="fade-up">
+    <nav class="nav nav-pills justify-content-center flex-column flex-lg-row text-center">
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <a 
             class="nav-link mb-3" 
@@ -18,15 +19,15 @@
           </a>
         </div>
       </nav>
-      <div class="row mt-4" *ngIf="!experienceSelected">
-        <div class="p-5 text-center border-top border-bottom" data-aos="fade-up">
+      <div class="row mt-4" *ngIf="!experienceSelected && !mostrarAddExperience">
+        <div class="p-5 text-center">
             <h6>
                 Por favor, seleccione una experiencia laboral
                 para poder visualizarla.
             </h6>
         </div>
       </div>
-      <div class="tab-content" id="nav-tabContent">
+      <div class="tab-content" id="nav-tabContent" >
         <div 
           *ngFor="let experience of experiences"
           class="tab-pane fade show" 
@@ -34,9 +35,20 @@
           role="tabpanel" 
           aria-labelledby="nav-home-tab"> 
           <app-element-experience
+            *ngIf="!mostrarAddExperience"
             [experience]="experience"
             [canDelete]="canDelete">
           </app-element-experience>
-        </div>  
+        </div>
       </div>
+      <div class="text-center pb-3" *ngIf="!mostrarAddExperience">
+        <button class="btn mx-auto" (click)="toggleMostrarAddExperience()" *ngIf="isLoggedIn$">
+          <i class="bi bi-plus-square" style="font-size:24px;"></i>
+        </button>
+      </div>  
+      <div class="container mt-4 element" data-aos="fade-up" *ngIf="mostrarAddExperience">
+        <app-add-experience 
+            (onAddExperience)= "toggleMostrarAddExperience()">
+        </app-add-experience>
+      </div >
     </div>

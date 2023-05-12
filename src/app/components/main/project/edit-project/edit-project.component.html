@@ -4,9 +4,11 @@
     <h3>Editar proyecto</h3>
 </div>
 <div 
-  class="container p-5 form"
+  class="container form"
   data-aos="fade-up">
     <form
+        class="mx-auto"
+        style="max-width: 500px;"
         (ngSubmit)="onEditProject($event); toggleMostrarEditProject()"
         [formGroup]="editForm">
         <div class="mb-3">
@@ -23,9 +25,6 @@
               <p *ngIf= "Title?.hasError('required')" class="text-danger">
                 Debe ingresar el nombre de su proyecto.
               </p>
-              <p *ngIf ="Title?.hasError('minlength')" class="text-danger">
-                Debe contener más de 3 caracteres.
-              </p>
             </div>
         </div>
         <div class="mb-3">
@@ -37,15 +36,15 @@
                 class="form-control" 
                 id="descriptionTitle" 
                 aria-describedby="professionHelp"
-                placeholder="Ingrese una descripción sobre las temáticas aprendidas al lograr dicho título."
+                placeholder="Ingrese una descripción de su proyecto."
                 [ngClass]="{'is-invalid': Description?.errors && Description?.touched, 'is-valid': !Description?.errors && Description?.touched}">
             </textarea>
             <div *ngIf= "Description?.errors && Description?.touched">
                 <p *ngIf= "Description?.hasError('required')" class="text-danger">
                   La descripción es requerida.
                 </p>
-                <p *ngIf ="Description?.errors?.['minlength'] || Description?.errors?.['maxlength'] " class="text-danger">
-                  La descripción debe tener entre 50 y 200 caracteres.
+                <p *ngIf ="Description?.errors?.['maxlength'] " class="text-danger">
+                  La descripción debe tener hasta 200 caracteres.
                 </p>
             </div>
         </div>
@@ -57,14 +56,14 @@
                 class="form-control" 
                 id="imgProject" 
                 aria-describedby="photoURLHelp"
-                placeholder="Ingrese la URL del logo de la academia que certificó el título"
+                placeholder="Ingrese la URL del logo de su proyecto que certificó el título"
                 [ngClass]="{'is-invalid': ImageProject?.errors && ImageProject?.touched, 'is-valid': !ImageProject?.errors && ImageProject?.touched}">
             <div *ngIf= "ImageProject?.errors && ImageProject?.touched">
               <p *ngIf= "ImageProject?.hasError('required')" class="text-danger">
                 Debe ingresar la URL del logo.
               </p>
-              <p *ngIf ="ImageProject?.hasError('minlength') || ImageProject?.errors?.['maxlength'] " class="text-danger">
-                La URL debe contener entre 10 y 1000 caracteres
+              <p *ngIf ="ImageProject?.errors?.['maxlength'] " class="text-danger">
+                La URL debe contener hasta 1000 caracteres
               </p>
             </div>
         </div>
@@ -82,14 +81,15 @@
               <p *ngIf= "Url?.hasError('required')" class="text-danger">
                 Debe ingresar la URL de su proyecto.
               </p>
-              <p *ngIf ="Url?.hasError('minlength') || Url?.errors?.['maxlength'] " class="text-danger">
-                La URL debe contener entre 10 y 1000 caracteres
+              <p *ngIf ="Url?.errors?.['maxlength'] " class="text-danger">
+                La URL debe contener hasta 1000 caracteres.
               </p>
             </div>
         </div>
 
-        <div class="text-center" >
-            <button type="submit" class="btn btn-primary mt-4" [disabled]="!editForm.valid">Guardar cambios</button>
+        <div class="text-center  mt-4">
+          <button type="button" class="btn btn-dark mx-3" (click)="toggleMostrarEditProject()">Volver</button>
+          <button type="submit" class="btn btn-dark" [disabled]="!editForm.valid">Guardar cambios</button>
         </div>
     </form>
 </div>

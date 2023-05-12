@@ -15,28 +15,29 @@ const httpOptions = {
 export class DatabaseProjectService {
 
   private apiPrueba = "http://localhost:3000";
+  private apiProject = "http://localhost:8080/api"
 
   constructor(private http: HttpClient) { }
 
   getProject(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.apiPrueba + "/project");
+    return this.http.get<Project[]>(this.apiProject + "/traer/proyecto");
   }
 
   addProject(newProject: Project): Observable<Project>{
-    return this.http.post<Project>(this.apiPrueba + "/project", newProject, httpOptions).pipe(map(
+    return this.http.post<Project>(this.apiProject + "/agregar/proyecto", newProject, httpOptions).pipe(map(
       response => response as Project
     ))
   }
 
   editProject(Project: Project) : Observable<Project> {
-    const url = `${this.apiPrueba}/project/${Project.id}`;
+    const url = `${this.apiProject}/editar/proyecto/${Project.id}`;
     return this.http.put<Project>(url,Project,httpOptions).pipe(map(
       response => response as Project
     ))
   }
   
   deleteProject(Project: Project ): Observable<Project> {
-    const url = `${this.apiPrueba}/project/${Project.id}`
+    const url = `${this.apiProject}/borrar/proyecto/${Project.id}`
     return this.http.delete<Project>(url);
   }
 }

@@ -41,7 +41,6 @@ export class ElementProjectComponent implements OnInit{
   isLoggedIn$: boolean = false;
   isLoggedInSubscription?: Subscription;
   mostrarEditProject: boolean = false;
-  mostrarAddProject: boolean = false;
 
   onDeleteProject(project: Project){
     this.communicator.onDeleteProject(project);
@@ -52,8 +51,6 @@ export class ElementProjectComponent implements OnInit{
     console.log('canDelete' + this.canDelete)
   }
 
-  toggleMostrarAddProject(){
-    this.mostrarAddProject = !this.mostrarAddProject;
-  }
+
 
 }

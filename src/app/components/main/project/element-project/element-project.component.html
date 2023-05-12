@@ -1,4 +1,4 @@
-<div class="container mt-4 element" data-aos="fade-up"     *ngIf="!mostrarAddProject && !mostrarEditProject">
+<div class="container mt-4 element"     *ngIf="!mostrarEditProject">
   <div class="card text-center mx-auto" style="max-width: 25rem;">
       <div class="card-body">
         <img src="{{project.imageProject}}" alt="logo" class="logo img-fluid rounded pb-4">
@@ -14,9 +14,6 @@
         <a href="{{project.url}}" class="pb-4" target="_blank">¡Visítame!</a>
       </div>
       <div class="col-12 text-center pb-3">
-        <button class="btn"  (click)="toggleMostrarAddProject()" *ngIf="isLoggedIn$" >
-            <i class="bi bi-plus-square" style="font-size:24px;"></i>
-        </button>
         <button class="btn" (click)="toggleMostrarEditProject()" *ngIf="isLoggedIn$" >
             <i class="bi bi-pencil-square" style="font-size:24px;"></i>
         </button>
@@ -26,11 +23,6 @@
       </div>
     </div>
   </div>
-<div class="container mt-4 element" data-aos="fade-up" *ngIf="mostrarAddProject">
-    <app-add-project 
-        (onAddProject)= "toggleMostrarAddProject()">
-    </app-add-project>
-</div >
 <div class="container mt-4 element" data-aos="fade-up" *ngIf="mostrarEditProject">
   <app-edit-project 
       (toggleEditProjectEventEmitter)= "toggleMostrarEditProject()"

@@ -1,11 +1,11 @@
-<div class="bgn">
-  <div class="container p-4 border-bottom">
+
+  <div class="container p-3 border-bottom" data-aos="fade-right">
       <h2 class="text-center " id="proyectos">
           Proyectos
       </h2>
   </div>
-  <div class="container mt-4 p-5 cover" >
-    <nav class="nav nav-pills justify-content-center flex-column flex-lg-row text-center" data-aos="fade-up">
+  <div class="container mt-4 p-3 cover" data-aos="fade-right">
+    <nav class="nav nav-pills justify-content-center flex-column flex-lg-row text-center">
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
         <a 
           class="nav-link mb-3" 
@@ -17,15 +17,15 @@
         </a>
       </div>
     </nav>
-    <div class="row mt-4" *ngIf="!projectSelected">
-      <div class="p-5 text-center border-top border-bottom" data-aos="fade-up">
+    <div class="row mt-4" *ngIf="!projectSelected && !mostrarAddProject">
+      <div class="p-5 text-center">
           <h6>
             Por favor, seleccione un proyecto
             para poder ver su detalle.
           </h6>
       </div>
     </div>
-    <div class="tab-content" id="nav-tabContent">
+    <div class="tab-content" id="nav-tabContent" >
       <div 
         *ngFor="let project of projects"
         class="tab-pane fade show" 
@@ -33,10 +33,20 @@
         role="tabpanel" 
         aria-labelledby="nav-home-tab"> 
         <app-element-project
+          *ngIf="!mostrarAddProject"
           [project]="project"
           [canDelete]="canDelete">
         </app-element-project>
-      </div>  
+      </div>
+      <div class="text-center pb-3" *ngIf="!mostrarAddProject">
+        <button class="btn"  (click)="toggleMostrarAddProject()" *ngIf="isLoggedIn$">
+            <i class="bi bi-plus-square" style="font-size:24px;"></i>
+        </button>
+      </div>   
     </div>
-  </div>  
-</div>
+    <div class="container mt-4 element" data-aos="fade-up" *ngIf="mostrarAddProject">
+      <app-add-project 
+          (onAddProject)= "toggleMostrarAddProject()">
+      </app-add-project>
+    </div > 
+  </div>

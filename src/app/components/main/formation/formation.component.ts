@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import * as AOS from 'aos';
+import { Subscription } from 'rxjs';
 import { Formation } from 'src/app/interfaces/interfaces';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CommunicatorFormationService } from 'src/app/services/formation/communicator-formation.service';
 import { DatabaseFormationService } from 'src/app/services/formation/database-formation.service';
 
@@ -14,6 +16,12 @@ export class FormationComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.isLoggedInSubscription = this.authServ.isLoggedIn$.subscribe(
+      (isLoggedIn: boolean) => {
+        this.isLoggedIn$ = isLoggedIn;
+      }
+    );
+
     this.database.getFormation().subscribe((dbformations) => {
       this.formations = dbformations;
     });
@@ -24,10 +32,14 @@ export class FormationComponent implements OnInit {
 
     this.communicator.onDeleteFormationeObservable().subscribe((deleteExp)=>{
       this.deleteFormation(deleteExp);
+      this.formationSelected = false;
+
     });
 
     this.communicator.onEditFormationObservable().subscribe((editFormation)=>{
       this.editFormation(editFormation);
+      this.formationSelected = false;
+
     });
     
     AOS.init({
@@ -38,6 +50,7 @@ export class FormationComponent implements OnInit {
   }
   
   constructor(
+    private authServ: AuthenticationService,
     public router: Router,
     private database: DatabaseFormationService,
     private communicator: CommunicatorFormationService
@@ -45,6 +58,9 @@ export class FormationComponent implements OnInit {
 
   formations: Formation[] = []
   formationSelected: boolean = false;
+  mostrarAddFormation: boolean = false;
+  isLoggedIn$: boolean = false;
+  isLoggedInSubscription?: Subscription;
 
   getFormations(){
     this.database.getFormation().subscribe((dbformations) => {
@@ -76,6 +92,10 @@ export class FormationComponent implements OnInit {
 
   toggleFormationSelected(){
     this.formationSelected = true;
+  }
+
+  toggleMostrarAddFormation(){
+    this.mostrarAddFormation = !this.mostrarAddFormation
   }
 
 

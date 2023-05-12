@@ -22,15 +22,16 @@ export class EditProjectComponent implements OnInit{
       this.editForm = this.formBuilder.group(
         {
           id: [''],
-          title: ['', [Validators.required, Validators.minLength(3)]],
-          description: ['', [Validators.required, Validators.minLength(50), Validators.maxLength(200)]],
-          imageProject: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(1000)]],
-          url: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(1000)]],
+          title: ['', [Validators.required]],
+          description: ['', [Validators.required, Validators.maxLength(200)]],
+          imageProject: ['', [Validators.required, Validators.maxLength(1000)]],
+          url: ['', [Validators.required, Validators.maxLength(1000)]],
         }
       )
   }
+
   ngOnInit(): void {
-    console.log(this.project);
+    this.editForm.patchValue(this.project);
   }
 
   onEditProject(event: Event){

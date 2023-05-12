@@ -4,9 +4,11 @@
     <h3>Agregar formación</h3>
 </div>
 <div 
-  class="container p-5 form"
+  class="container form"
   data-aos="fade-up">
     <form
+        class="mx-auto"
+        style="max-width: 500px;"
         (ngSubmit)="addFormation($event); toggleAddFormation()"
         [formGroup]="addForm">
         <div class="mb-3">
@@ -23,9 +25,6 @@
               <p *ngIf= "Title?.hasError('required')" class="text-danger">
                 Debe ingresar el título logrado.
               </p>
-              <p *ngIf ="Title?.hasError('minlength')" class="text-danger">
-                Debe contener más de 3 caracteres.
-              </p>
             </div>
         </div>
         <div class="mb-3">
@@ -37,15 +36,15 @@
                 class="form-control" 
                 id="descriptionTitle" 
                 aria-describedby="professionHelp"
-                placeholder="Ingrese una descripción sobre las temáticas aprendidas al lograr dicho título."
+                placeholder="Ingrese una descripción sobre lo aprendido al cursar dicho título."
                 [ngClass]="{'is-invalid': Description?.errors && Description?.touched, 'is-valid': !Description?.errors && Description?.touched}">
             </textarea>
             <div *ngIf= "Description?.errors && Description?.touched">
                 <p *ngIf= "Description?.hasError('required')" class="text-danger">
                   La descripción es requerida.
                 </p>
-                <p *ngIf ="Description?.errors?.['minlength'] || Description?.errors?.['maxlength'] " class="text-danger">
-                  La descripción debe tener entre 100 y 600 caracteres.
+                <p *ngIf ="Description?.errors?.['maxlength'] " class="text-danger">
+                  La descripción debe tener hasta 500 caracteres.
                 </p>
             </div>
         </div>
@@ -63,8 +62,8 @@
               <p *ngIf= "LogoAcademy?.hasError('required')" class="text-danger">
                 Debe ingresar la URL del logo institucional.
               </p>
-              <p *ngIf ="LogoAcademy?.hasError('minlength') || LogoAcademy?.errors?.['maxlength'] " class="text-danger">
-                La URL debe contener entre 10 y 1000 caracteres
+              <p *ngIf ="LogoAcademy?.errors?.['maxlength'] " class="text-danger">
+                La URL debe contener hasta 1000 caracteres
               </p>
             </div>
         </div>
@@ -77,14 +76,14 @@
                     class="form-control" 
                     id="startDate" 
                     aria-describedby="startDateHelp"
-                    placeholder="Ingrese el año de inicio de la cursada. Ej: 2023"
+                    placeholder="Ingrese la fecha de inicio de cursada."
                     [ngClass]="{'is-invalid': StartDate?.errors && StartDate?.touched, 'is-valid': !StartDate?.errors && StartDate?.touched}">
                     <div *ngIf= "StartDate?.errors && StartDate?.touched">
                       <p *ngIf= "StartDate?.hasError('required')" class="text-danger">
-                        Debe ingresar el año de inicio de la cursada.
+                        Debe ingresar la fecha de inicio de la cursada.
                       </p>
-                      <p *ngIf ="StartDate?.hasError('minlength') || StartDate?.hasError('maxLength') " class="text-danger">
-                        El año de inicio de la cursada debe tener 4 caracteres.
+                      <p *ngIf ="StartDate?.hasError('pattern') " class="text-danger">
+                        El formato de la fecha debe ser "Mes año" o "Actualidad"
                       </p>
                     </div>
             </div>
@@ -96,20 +95,21 @@
                   class="form-control" 
                   id="endDate" 
                   aria-describedby="endDateHelp"
-                  placeholder="Ingrese el año de finalización de la cursada. Ej: 2023"
+                  placeholder="Ingrese la fecha de finalización de la cursada."
                   [ngClass]="{'is-invalid': EndDate?.errors && EndDate?.touched, 'is-valid': !EndDate?.errors && EndDate?.touched}">
                   <div *ngIf= "EndDate?.errors && EndDate?.touched">
                     <p *ngIf= "EndDate?.hasError('required')" class="text-danger">
-                      Debe ingresar el año de finalización del curso.
+                      Debe ingresar la fecha de finalización del curso
                     </p>
-                    <p *ngIf ="EndDate?.hasError('minlength') || EndDate?.hasError('maxLength') " class="text-danger">
-                       Año de finalización de la cursada debe tener 4 caracteres.
+                    <p *ngIf ="EndDate?.hasError('pattern') " class="text-danger">
+                      El formato de la fecha debe ser "Mes Año" o "Actualidad"
                     </p>
                   </div>
             </div>
         </div>
-        <div class="text-center" >
-            <button type="submit" class="btn btn-primary mt-4" [disabled]="!addForm.valid">Guardar cambios</button>
+        <div class="text-center  mt-4">
+          <button type="button" class="btn btn-dark mx-3" (click)="toggleAddFormation()">Volver</button>
+          <button type="submit" class="btn btn-dark" [disabled]="!addForm.valid">Agregar formación</button>
         </div>
     </form>
 </div>

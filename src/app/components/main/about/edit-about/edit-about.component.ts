@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ABOUT } from 'src/app/interfaces/ABOUT';
+import { About } from 'src/app/interfaces/interfaces';
 import { CommunicatorAboutService } from 'src/app/services/about/communicator-about.service';
 
 
@@ -8,9 +10,10 @@ import { CommunicatorAboutService } from 'src/app/services/about/communicator-ab
   templateUrl: './edit-about.component.html',
   styleUrls: ['./edit-about.component.css']
 })
-export class EditAboutComponent {
+export class EditAboutComponent implements OnInit{
 
   editForm: FormGroup;
+  @Input() about: About = ABOUT[0];
   @Output() toggleEditAboutEventEmitter: EventEmitter<any> = new EventEmitter();
 
   constructor(
@@ -19,16 +22,19 @@ export class EditAboutComponent {
 
       this.editForm = this.formBuilder.group(
         {
-          id: ['1'],
-          photoURL: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(1000)]],
-          name: ['', [Validators.required, Validators.minLength(3)]],
-          profession: ['', [Validators.required, Validators.minLength(3)]],
-          description: ['', [Validators.required, Validators.minLength(100), Validators.maxLength(1000)]],
-          city: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(250)]],
-          country: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(250)]],
+          id: [''],
+          photourl: ['', [Validators.required, Validators.maxLength(1000)]],
+          name: ['', [Validators.required]],
+          profession: ['', [Validators.required]],
+          description: ['', [Validators.required, Validators.maxLength(500)]],
+          city: ['', [Validators.required, Validators.maxLength(250)]],
+          country: ['', [Validators.required, Validators.maxLength(250)]],
         }
       )
     }
+  ngOnInit(): void {
+    this.editForm.patchValue(this.about);
+  }
 
     onEditAbout(event: Event){
       const editAbout = this.editForm.value;
@@ -42,7 +48,7 @@ export class EditAboutComponent {
     
 
     get PhotoUrl(){
-      return this.editForm.get('photoURL');
+      return this.editForm.get('photourl');
     }
   
     get Name(){

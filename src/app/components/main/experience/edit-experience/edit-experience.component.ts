@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { EXPERIENCE } from 'src/app/interfaces/EXPERIENCE';
 import { Experiences } from 'src/app/interfaces/interfaces';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -10,7 +10,8 @@ import { CommunicatorService } from 'src/app/services/experiences/communicator-e
   styleUrls: ['./edit-experience.component.css']
 })
 
-export class EditExperienceComponent {
+export class EditExperienceComponent implements OnInit{
+
   @Input() experience: Experiences = EXPERIENCE[0];
   @Output() toggleEditExpEventEmitter: EventEmitter<any> = new EventEmitter();
 
@@ -24,16 +25,23 @@ export class EditExperienceComponent {
       this.editForm = this.formBuilder.group(
         {
           id: [''],
-          name: ['', [Validators.required, Validators.minLength(3)]],
+          name: ['', [Validators.required, Validators.minLength(2)]],
           logourl: ['', [Validators.required, Validators.maxLength(1000)]],
-          description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(1000)]],
-          date: ['', [Validators.required, Validators.pattern(/[A-Za-z]+\s[0-9]+\s-\s([A-Za-z]+\s[0-9]|[[A-Za-z])/)]]
+          description: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(500)]],
+          startDate: ['', [Validators.required, Validators.pattern(/([A-Za-z]+\s[0-9]+)|(Actualidad)/)]],
+          endDate: ['', [Validators.required, Validators.pattern(/([A-Za-z]+\s[0-9]+)|(Actualidad)/)]]
+
         }
       )
     }
 
+    ngOnInit(): void {
+      this.editForm.patchValue(this.experience);
+    }
+
+
   onEditExp(event: Event){
-    const editId = this.experience.id;
+    event.preventDefault;
     this.editForm.patchValue({
       id: this.experience.id
     })
@@ -41,7 +49,7 @@ export class EditExperienceComponent {
     this.communicator.onEditExperience(editExp);
   }
 
-  toggleEditExp(){
+  toggleEditExperience(){
     this.toggleEditExpEventEmitter.emit();
   }
 
@@ -57,9 +65,14 @@ export class EditExperienceComponent {
     return this.editForm.get("description");
   }
 
-  get Date(){
-    return this.editForm.get("date");
+  get StartDate(){
+    return this.editForm.get("startDate");
   }
+
+  get EndDate(){
+    return this.editForm.get("endDate");
+  }
+
 
   get Id(){
     return this.editForm.get("id");

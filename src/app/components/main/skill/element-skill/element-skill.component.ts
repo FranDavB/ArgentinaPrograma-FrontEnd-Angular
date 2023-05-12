@@ -16,7 +16,13 @@ import { DatabaseSkillService } from 'src/app/services/skill/database-skill.serv
 })
 export class ElementSkillComponent implements OnInit{
 
-  ngOnInit(): void {    
+  ngOnInit(): void {  
+    this.isLoggedInSubscription = this.authServ.isLoggedIn$.subscribe(
+      (isLoggedIn: boolean) => {
+        this.isLoggedIn$ = isLoggedIn;
+      }
+    );
+      
     AOS.init({
       duration: 1000,
       offset: 200
@@ -34,7 +40,6 @@ export class ElementSkillComponent implements OnInit{
   isLoggedIn$: boolean = false;
   isLoggedInSubscription?: Subscription;
   mostrarEditSkill: boolean = false;
-  mostrarAddSkill: boolean = false;
 
   onDeleteSkill(skill: Skill){
     this.communicator.onDeleteSkill(skill);
@@ -45,8 +50,5 @@ export class ElementSkillComponent implements OnInit{
     console.log('canDelete' + this.canDelete)
   }
 
-  toggleMostrarAddSkill(){
-    this.mostrarAddSkill = !this.mostrarAddSkill;
-  }
 
 }

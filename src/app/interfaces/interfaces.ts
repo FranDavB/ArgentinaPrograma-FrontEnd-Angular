@@ -3,7 +3,8 @@ export interface Experiences{
     name: string;
     logourl: string;
     description: string;
-    date: string;
+    startDate: string;
+    endDate: string;
 }
 
 export interface Credentials{
@@ -14,7 +15,7 @@ export interface Credentials{
 export interface About{
     id: number;
     name: string;
-    photoURL: string;
+    photourl: string;
     profession: string;
     description: string;
     city: string;

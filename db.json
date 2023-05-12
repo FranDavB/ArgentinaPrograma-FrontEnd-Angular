@@ -5,7 +5,16 @@
       "name": "Amada Crianza",
       "logourl": "/assets/Img/amadacrianzalogo.png",
       "description": "Amada Crianza es una empresa con el objetivo de vestir a tus hijos desde su nacimiento hasta su adolescencia! Desde mayo de 2023 me desempeño como desarrollador de su nueva página web, basada en Angular, Java y MySQL.",
-      "date": "Mayo 2023 - Actualidad"
+      "startDate": "Mayo 2023 ",
+      "endDate": "Actualidad"
+    },
+    {
+      "name": "Empresa 4200",
+      "logourl": "https://d22fxaf9t8d39k.cloudfront.net/2dafdf83c06414144f86b30f531a4494d559a594e0cb6d54b8ebef59f7118dfd16986.png",
+      "description": "Amada Crianza es una empresa con el objetivo de vestir a tus hijos desde su nacimiento hasta su adolescencia! Desde mayo de 2023 me desempeño como desarrollador de su nueva página web, basada en Angular, Java y MySQL.\n\n",
+      "startDate": "Enero 2023 ",
+      "endDate": "Actualidad",
+      "id": 2
     }
   ],
   "about": [
@@ -14,7 +23,7 @@
       "photoURL": "./assets/Img/Foto.jpg",
       "name": "Franco David Baretta",
       "profession": "Junior Web Developer y Biólogo",
-      "description": "Soy un aficionado a la programación y actualmente me encuentro cursando la diplomatura en desarrollo web de Argentina Programa. Por otro lado, soy estudiante de Biología en la Universidad Nacional de Córdoba, en donde me especializo en el comportamiento animal. En mis ratos libres programo aplicaciones web y ahondo en temáticas de las neurociencias e historia.\n\n",
+      "description": "Soy un aficionado a la programación y actualmente me encuentro cursando la diplomatura en desarrollo web de Argentina Programa. Por otro lado, soy estudiante de Biología en la Universidad Nacional de Córdoba, en donde me especializo en el comportamiento animal. En mis ratos libres programo aplicaciones web y ahondo en temáticas de las neurociencias e historia.",
       "city": "Córdoba",
       "country": "Argentina"
     }
@@ -31,7 +40,7 @@
     {
       "id": 2,
       "title": "Web Developer",
-      "description": "He desarrollado conocimientos teóricos y prácticos relativos al desarrollo integral y responsive de una aplicación web. Frontend basado en Angular, Backend en Java y utilizando SQL como base de datos. También adquirí nociones básicas en seguridad virtual, frontend estático y metodologías de trabajo en grupo.\n\n",
+      "description": "He desarrollado conocimientos teóricos y prácticos relativos al desarrollo integral y responsive de una aplicación web. Frontend basado en Angular, Backend en Java y utilizando SQL como base de datos. También adquirí nociones básicas en seguridad virtual, frontend estático y metodologías de trabajo en grupo.",
       "logoAcademy": "https://scontent.fcor10-4.fna.fbcdn.net/v/t39.30808-6/300846334_102048172639807_8682311619358098660_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=sBqV0bNFXIQAX9XYdsy&_nc_ht=scontent.fcor10-4.fna&oh=00_AfAkRj5CS3Uae9iAAcpHoMuvG8Had0I4pk9nN2JWH0OeRQ&oe=645A4B34",
       "startDate": "2022",
       "endDate": "2023"
@@ -39,7 +48,7 @@
   ],
   "project": [
     {
-      "id": 2,
+      "id": 1,
       "title": "Portfolio",
       "description": "En esta aplicación web hago un resumen de mí mismo: quién soy, experiencias laborales, formación, proyectos, habilidades y cómo contactarme.",
       "imageProject": "./assets/Img/B.png",
@@ -73,14 +82,14 @@
       "percentage": "70"
     },
     {
-      "id": 7,
-      "title": "Java",
-      "percentage": "65"
-    },
-    {
       "id": 8,
       "title": "Typescript",
       "percentage": "65"
+    },
+    {
+      "id": 9,
+      "title": "Inglés",
+      "percentage": "60"
     }
   ]
 }

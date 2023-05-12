@@ -23,9 +23,6 @@
               <p *ngIf= "Title?.hasError('required')" class="text-danger">
                 Debe ingresar una habilidad.
               </p>
-              <p *ngIf ="Title?.hasError('minlength')" class="text-danger">
-                Debe contener más de 3 caracteres.
-              </p>
             </div>
         </div>
         <div class="mb-3">
@@ -43,13 +40,14 @@
                 <p *ngIf= "Percentage?.hasError('required')" class="text-danger">
                   El porcentaje es obligatorio
                 </p>
-                <p *ngIf ="Percentage?.errors?.['minlength'] || Percentage?.errors?.['pattern'] || Percentage?.errors?.['maxlength'] " class="text-danger">
+                <p *ngIf ="Percentage?.errors?.['pattern'] || Percentage?.errors?.['maxlength'] " class="text-danger">
                   El porcentaje debe ser un número e ir del 1 al 100.
                 </p>
             </div>
         </div>
-        <div class="text-center" >
-            <button type="submit" class="btn btn-primary mt-4" [disabled]="!editForm.valid">Guardar cambios</button>
+        <div class="text-center  mt-4">
+          <button type="button" class="btn btn-dark mx-3" (click)="toggleMostrarEditSkill()">Volver</button>
+          <button type="submit" class="btn btn-dark" [disabled]="!editForm.valid">Guardar cambios</button>
         </div>
     </form>
 </div>

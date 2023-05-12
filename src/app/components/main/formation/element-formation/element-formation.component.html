@@ -1,6 +1,6 @@
 
-     <div class="container mt-4 element" data-aos="fade-up"     *ngIf="!mostrarAddFormation && !mostrarEditFormation">
-        <div class="row border-bottom border-dark justify-content-center">
+     <div class="container mt-4 element"    *ngIf="!mostrarEditFormation">
+        <div class="row justify-content-center">
             <div class="col-6 mb-3">
                 <h3 class="text-center">
                     {{formation.title}}
@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 mt-3 mb-3 border-bottom">
+            <div class="col-12 mt-3 mb-3">
                 <p>
                     {{formation.description}}
                 </p>
@@ -26,9 +26,6 @@
         </div>
         <div class="row">
             <div class="col-12 text-center">
-                <button class="btn" (click)="toggleMostrarAddFormation()" *ngIf="isLoggedIn$">
-                    <i class="bi bi-plus-square" style="font-size:24px;"></i>
-                </button>
                 <button class="btn" (click)="toggleMostrarEditFormation()" *ngIf="isLoggedIn$">
                     <i class="bi bi-pencil-square" style="font-size:24px;"></i>
                 </button>
@@ -38,11 +35,6 @@
             </div>
         </div>
     </div>
-    <div class="container mt-4 element" data-aos="fade-up" *ngIf="mostrarAddFormation">
-        <app-add-formation 
-            (onAddFormation)= "toggleMostrarAddFormation()">
-        </app-add-formation>
-    </div >
     <div class="container mt-4 element" data-aos="fade-up" *ngIf="mostrarEditFormation">
         <app-edit-formation 
             (toggleEditFormationEventEmitter)= "toggleMostrarEditFormation()"

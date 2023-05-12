@@ -22,8 +22,8 @@ export class AddSkillComponent {
       this.addForm = this.formBuilder.group(
         {
           id: [''],
-          title: ['', [Validators.required, Validators.minLength(3)]],
-          percentage: ['', [Validators.required, Validators.minLength(1), Validators.pattern(/[0-9]+/), Validators.maxLength(3)]]
+          title: ['', [Validators.required]],
+          percentage: ['', [Validators.required,  Validators.pattern(/[0-9]+/), Validators.maxLength(3)]]
         }
       )
   }

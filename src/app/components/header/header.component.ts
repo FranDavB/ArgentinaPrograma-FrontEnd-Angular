@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
 import * as AOS from 'aos';
+import { Subscription } from 'rxjs';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { DatabaseAboutService } from 'src/app/services/about/database-about.service';
+import { ABOUT } from 'src/app/interfaces/ABOUT';
+import { About } from 'src/app/interfaces/interfaces';
 
 @Component({
   selector: 'app-header',
@@ -11,11 +15,27 @@ import * as AOS from 'aos';
 export class HeaderComponent implements OnInit {
 
   constructor(
-    private responsive: BreakpointObserver,
+    private database: DatabaseAboutService,
+    private authServ: AuthenticationService, 
     private router: Router) {
   }
 
   ngOnInit(): void {
+
+    this.isLoggedInSubscription = this.authServ.isLoggedIn$.subscribe(
+      (isLoggedIn: boolean) => {
+        this.isLoggedIn$ = isLoggedIn;
+      }
+    );
+
+    this.database.getAbout().subscribe((dbAbout) => {
+      const getAbout = dbAbout.find(item => item.id === 1);
+      if (getAbout != null){
+        this.about = getAbout;
+      }
+      
+    });
+
     AOS.init({
       duration: 1000,
       offset: 200
@@ -29,5 +49,14 @@ export class HeaderComponent implements OnInit {
       elementoDestino.scrollIntoView({ behavior: 'smooth' });
     } 
   }
+
+  logOut(){
+    this.authServ.logout()
+  }
+
+  isLoggedIn$: boolean = false;
+  isLoggedInSubscription?: Subscription;
+  about: About = ABOUT[0];
+
 
 }
