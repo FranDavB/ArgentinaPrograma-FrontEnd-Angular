@@ -15,7 +15,7 @@ const httpOptions = {
 export class DatabaseSkillService {
 
   private apiPrueba = "http://localhost:3000";
-  private apiSkill = "http://localhost:8080/api"
+  private apiSkill = "https://proyectoargprogrbackend.onrender.com/api"
 
   constructor(private http: HttpClient) { }
 

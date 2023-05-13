@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class DatabaseAboutService {
 
-  private apiAboutUrl = "http://localhost:8080/api";
+  private apiAboutUrl = "https://proyectoargprogrbackend.onrender.com/api";
   private apiPrueba = "http://localhost:3000";
 
   constructor(

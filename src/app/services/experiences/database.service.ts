@@ -22,7 +22,7 @@ export class DatabaseService {
 
   constructor(private http: HttpClient) { }
 
-  private apiExperienceUrl = "http://localhost:8080/api";
+  private apiExperienceUrl = "https://proyectoargprogrbackend.onrender.com/api";
   private apiPrueba = "http://localhost:3000";
   
    getExperience(): Observable<Experiences[]> {

@@ -15,7 +15,7 @@ const httpOptions = {
 export class DatabaseFormationService {
 
   private apiPrueba = "http://localhost:3000";
-  private apiFormation = "http://localhost:8080/api"
+  private apiFormation = "https://proyectoargprogrbackend.onrender.com/api"
 
   constructor(private http: HttpClient) { }
 

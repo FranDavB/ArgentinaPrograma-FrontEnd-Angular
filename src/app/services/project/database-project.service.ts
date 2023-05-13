@@ -15,7 +15,7 @@ const httpOptions = {
 export class DatabaseProjectService {
 
   private apiPrueba = "http://localhost:3000";
-  private apiProject = "http://localhost:8080/api"
+  private apiProject = "https://proyectoargprogrbackend.onrender.com/api"
 
   constructor(private http: HttpClient) { }
 
